@@ -1,0 +1,7 @@
+CREATE VIEW reporting.vw_dot_asset_attachments AS
+SELECT  document_id, default_attachment, file_name, file_type, asset_num, 
+        kex_expiration_datetime, [name], notes, parent_asset_num, [path], 
+        restriction, type_id
+FROM reporting.D365_AssetAttachments
+GO
+

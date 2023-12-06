@@ -1,0 +1,15 @@
+CREATE TABLE [dbo].[MDM_PEOPLE] (
+    [EIN]         VARCHAR (9)   NULL,
+    [LAST_NAME]   VARCHAR (256) NULL,
+    [FIRST_NAME]  VARCHAR (256) NULL,
+    [MIDDLE_NAME] VARCHAR (256) NULL,
+    [STATUS]      VARCHAR (1)   NULL,
+    [HASH]        VARCHAR (256) NULL,
+    [ID]          INT           NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [MDM_PEOPLE_NDX]
+    ON [dbo].[MDM_PEOPLE]([HASH] ASC);
+GO
+

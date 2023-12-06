@@ -1,0 +1,36 @@
+CREATE TABLE [dbo].[Employee_test] (
+    [EIN]           NVARCHAR (9)   NULL,
+    [ADUSER]        NVARCHAR (64)  NULL,
+    [FIRST_NAME]    NVARCHAR (64)  NULL,
+    [LAST_NAME]     NVARCHAR (64)  NULL,
+    [JOB_CODE]      NVARCHAR (30)  NULL,
+    [JOB_FAMILY]    NVARCHAR (30)  NULL,
+    [HIRE_DATE]     NVARCHAR (10)  NULL,
+    [TERM_DATE]     NVARCHAR (10)  NULL,
+    [MANAGER_ID]    NVARCHAR (9)   NULL,
+    [LCO_CODE]      NVARCHAR (30)  NULL,
+    [LCO_NAME]      NVARCHAR (128) NULL,
+    [LOC_CODE]      NVARCHAR (30)  NULL,
+    [LOC_NAME]      NVARCHAR (128) NULL,
+    [MP_CODE]       NVARCHAR (30)  NULL,
+    [MP_NAME]       NVARCHAR (128) NULL,
+    [LOB_CODE]      NVARCHAR (30)  NULL,
+    [LOB_NAME]      NVARCHAR (128) NULL,
+    [AREA_CODE]     NVARCHAR (30)  NULL,
+    [AREA_NAME]     NVARCHAR (128) NULL,
+    [LEVEL1_CODE]   NVARCHAR (30)  NULL,
+    [LEVEL1_NAME]   NVARCHAR (128) NULL,
+    [LEVEL2_CODE]   NVARCHAR (30)  NULL,
+    [LEVEL2_NAME]   NVARCHAR (128) NULL,
+    [DISTRICT_CODE] NVARCHAR (30)  NULL,
+    [DISTRICT_NAME] NVARCHAR (128) NULL,
+    [STATUS]        NVARCHAR (10)  NULL,
+    [UPDATED_ON]    DATETIME       NULL
+);
+GO
+
+GRANT SELECT
+    ON OBJECT::[dbo].[Employee_test] TO [mdmdb_select]
+    AS [dbo];
+GO
+

@@ -1,0 +1,31 @@
+CREATE TABLE [dbo].[ADP_Transactions] (
+    [EmployeeStatus]       VARCHAR (5)   NULL,
+    [SystemChangeDate]     DATE          NULL,
+    [PayGroup]             VARCHAR (5)   NULL,
+    [EmployeeID]           VARCHAR (10)  NULL,
+    [Name]                 VARCHAR (MAX) NULL,
+    [JobTitle]             VARCHAR (50)  NULL,
+    [EffectiveDate]        DATE          NULL,
+    [Action]               VARCHAR (10)  NULL,
+    [ReasonCode]           VARCHAR (10)  NULL,
+    [ReasonDescription]    VARCHAR (256) NULL,
+    [Vol_InVol]            VARCHAR (50)  NULL,
+    [OrginalDateOfHire]    DATE          NULL,
+    [LastDateOfHire]       DATE          NULL,
+    [LocationCode]         VARCHAR (10)  NULL,
+    [WorkLocation]         VARCHAR (10)  NULL,
+    [WorkLocationDesc]     VARCHAR (256) NULL,
+    [Level1]               VARCHAR (10)  NULL,
+    [Level2]               VARCHAR (10)  NULL,
+    [Marketplace]          VARCHAR (10)  NULL,
+    [Dept_DistrictID]      VARCHAR (10)  NULL,
+    [Reg_Temp]             VARCHAR (5)   NULL,
+    [Full_Part]            VARCHAR (5)   NULL,
+    [Hourly_Salary]        VARCHAR (5)   NULL,
+    [ReportsToMangerID]    VARCHAR (10)  NULL,
+    [ReportsToManagerName] VARCHAR (50)  NULL,
+    [InsertDate]           DATETIME      NULL,
+    [InsertBatchNum]       VARCHAR (10)  NULL
+);
+GO
+

@@ -1,0 +1,4 @@
+CREATE SCHEMA [dotSproc]
+    AUTHORIZATION [dbo];
+GO
+

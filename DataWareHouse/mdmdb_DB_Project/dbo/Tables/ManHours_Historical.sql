@@ -1,0 +1,20 @@
+CREATE TABLE [dbo].[ManHours_Historical] (
+    [ROW_ID]       NVARCHAR (20)    NOT NULL,
+    [RUN_DATE]     DATETIME2 (7)    DEFAULT (getdate()) NULL,
+    [CUSTOMER_ID]  NVARCHAR (50)    NULL,
+    [CUSTOMER]     NVARCHAR (MAX)   NULL,
+    [LOB_NAME]     VARCHAR (250)    NULL,
+    [MKTP_NAME]    VARCHAR (250)    NULL,
+    [DIST_NAME]    VARCHAR (250)    NULL,
+    [EMPLOYEE_ID]  INT              NULL,
+    [Employee]     NVARCHAR (MAX)   NULL,
+    [DURATION]     DECIMAL (18, 10) NULL,
+    [CREATED_BY]   NVARCHAR (50)    NULL,
+    [WORK_TYPE]    NVARCHAR (50)    NULL,
+    [WORK_DATE]    DATETIME2 (7)    NULL,
+    [JOB_CODE]     NVARCHAR (50)    NULL,
+    [ASSET_NUMBER] VARCHAR (255)    NULL,
+    PRIMARY KEY CLUSTERED ([ROW_ID] ASC)
+);
+GO
+

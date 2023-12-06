@@ -1,0 +1,31 @@
+CREATE TABLE [dbo].[KeyView_Delays] (
+    [Well_API_Num]            VARCHAR (50)  NULL,
+    [Well_Name]               VARCHAR (128) NULL,
+    [Well_Field]              VARCHAR (50)  NULL,
+    [Rig]                     VARCHAR (50)  NULL,
+    [JobNumber]               VARCHAR (50)  NULL,
+    [MasterWorkType]          VARCHAR (50)  NULL,
+    [MasterJobType]           VARCHAR (50)  NULL,
+    [WorkType]                VARCHAR (50)  NULL,
+    [JobType]                 VARCHAR (50)  NULL,
+    [JobStartTime]            DATETIME      NULL,
+    [JobEndTime]              DATETIME      NULL,
+    [Activity]                VARCHAR (MAX) NULL,
+    [DelayStartTime]          DATETIME      NULL,
+    [DelayEndTime]            DATETIME      NULL,
+    [WaitCategory]            VARCHAR (50)  NULL,
+    [ResponsibleEquipService] VARCHAR (MAX) NULL,
+    [Vendor]                  VARCHAR (MAX) NULL,
+    [WaitReason]              VARCHAR (MAX) NULL,
+    [RootCause]               VARCHAR (MAX) NULL,
+    [DurationMinutes]         INT           NULL,
+    [BillableNPT]             INT           NULL,
+    [NonBillableNPT]          INT           NULL,
+    [Comments]                VARCHAR (MAX) NULL,
+    [WorkingDepth]            INT           NULL,
+    [WellboreConfig]          VARCHAR (50)  NULL,
+    [KeyViewOrgUnit]          VARCHAR (128) NULL,
+    [CustomerOrgUnit]         VARCHAR (128) NULL
+);
+GO
+

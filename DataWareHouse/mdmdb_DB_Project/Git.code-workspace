@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "DatabaseProject_DWH",
+			"path": "../../../ADS Projects/DatabaseProject_DWH"
+		}
+	],
+	"settings": {
+		"dataworkspace.excludedProjects": [
+			"DatabaseProject_DWH/DatabaseProject_DWH.sqlproj",
+			"Git/DB_Project_DWH/DB_Project_DWH.sqlproj",
+			"Git/DWH_DB_Project/DWH_DB_Project.sqlproj",
+			"Git/DWH_Project/DWH_Project.sqlproj"
+		]
+	}
+}

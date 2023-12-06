@@ -1,0 +1,32 @@
+CREATE TABLE [dbo].[FreshService_Requesters] (
+    [active]                                          NVARCHAR (10)  NULL,
+    [address]                                         NVARCHAR (MAX) NULL,
+    [background_information]                          NVARCHAR (MAX) NULL,
+    [can_see_all_changes_from_associated_departments] NVARCHAR (10)  NULL,
+    [can_see_all_tickets_from_associated_departments] NVARCHAR (10)  NULL,
+    [created_at]                                      NVARCHAR (20)  NULL,
+    [custom_fields]                                   NVARCHAR (MAX) NULL,
+    [department_ids]                                  NVARCHAR (MAX) NULL,
+    [department_names]                                NVARCHAR (MAX) NULL,
+    [external_id]                                     NVARCHAR (20)  NULL,
+    [first_name]                                      NVARCHAR (256) NULL,
+    [has_logged_in]                                   NVARCHAR (10)  NULL,
+    [id]                                              NVARCHAR (20)  NULL,
+    [is_agent]                                        NVARCHAR (10)  NULL,
+    [job_title]                                       NVARCHAR (256) NULL,
+    [language]                                        NVARCHAR (20)  NULL,
+    [last_name]                                       NVARCHAR (256) NULL,
+    [location_id]                                     NVARCHAR (20)  NULL,
+    [location_name]                                   NVARCHAR (256) NULL,
+    [mobile_phone_number]                             NVARCHAR (256) NULL,
+    [primary_email]                                   NVARCHAR (MAX) NULL,
+    [reporting_manager_id]                            NVARCHAR (20)  NULL,
+    [secondary_emails]                                NVARCHAR (MAX) NULL,
+    [time_format]                                     NVARCHAR (20)  NULL,
+    [time_zone]                                       NVARCHAR (60)  NULL,
+    [updated_at]                                      NVARCHAR (20)  NULL,
+    [vip_user]                                        NVARCHAR (10)  NULL,
+    [work_phone_number]                               NVARCHAR (256) NULL
+);
+GO
+
