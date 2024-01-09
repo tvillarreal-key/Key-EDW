@@ -1,4 +1,5 @@
-CREATE TABLE [reporting].[MDM_Assets] (
+--DROP TABLE [reporting].[MDM_Assets];
+CREATE TABLE [reporting].[MDM_Assets] (    
     [asset_id]                 INT            NOT NULL,
     [asset_num]                NVARCHAR (60)  NOT NULL,
     [asset_desc]               NVARCHAR (255) NULL,
@@ -32,9 +33,14 @@ CREATE TABLE [reporting].[MDM_Assets] (
     [yard_code]                NVARCHAR (20)  NULL,
     [yard_name]                NVARCHAR (100) NULL,
     [tire_size]                NVARCHAR (255) NULL,
+    [tire_size2]               NVARCHAR (255) NULL,
     [fifth_wheel]              NVARCHAR (255) NULL,
-    [crosses_state_lines]      BIT            NULL,
-    [trailer_attached_dvir]    BIT            NULL,
+    [License_Plate]            NVARCHAR (25) NULL,
+    [Number_of_Axles]          NVARCHAR (5) NULL,
+    [Gross_Vehicle_Weight]     NVARCHAR (20)  NULL,
+    [crosses_state_lines]               BIT            NULL,
+    [crosses_state_lines_with_trailer]  BIT            NULL,
+    [trailer_attached_dvir]             BIT            NULL,
     [attached_as_trailer_dvir] BIT            NULL,
     [dot_fields_populated]     BIT            NULL,
     [work_order]               NVARCHAR (255) NULL,
