@@ -19,7 +19,8 @@ WHERE status_desc IN ('WORKING', 'DOWN FOR REPAIR', 'IDLE', 'AVAILABLE', 'NEEDS 
 
 -- In scope assets TRUK, BULK, CRAU, PUMP, CTU, SPEC, WIRU
   asset_class IN ('TRUK', 'BULK', 'CRAU', 'CTU', 'WIRU') OR
-
+-- All DOT roadside inspections are automatically DOT in scope
+  dot_roadside_inspection = 1 OR
 -- Trailers where 5th wheel is set to yes
 --  (asset_class ='TRLR' AND fifth_wheel = 'Yes') OR --- need to use gross weight limit
   (asset_class ='TRLR' AND Gross_Vehicle_Weight >= 16000) OR --- need to use gross weight limit
