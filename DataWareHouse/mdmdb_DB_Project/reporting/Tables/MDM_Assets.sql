@@ -39,7 +39,7 @@ CREATE TABLE [reporting].[MDM_Assets](
 	[tire_size] [nvarchar](255) NULL,
 	[tire_size2] [nvarchar](255) NULL,
 	[fifth_wheel] [nvarchar](255) NULL,
-	[License_Plate] [nvarchar](25) NULL,
+	[License_Plate] [nvarchar](50) NULL,
 	[Number_of_Axles] [nvarchar](5) NULL,
 	[Gross_Vehicle_Weight] [int] NULL,
 	[dot_roadside_inspection] [bit] NULL,    
