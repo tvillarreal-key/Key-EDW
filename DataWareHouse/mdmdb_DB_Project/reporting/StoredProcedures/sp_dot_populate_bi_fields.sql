@@ -1,7 +1,5 @@
-/****** Object:  StoredProcedure [reporting].[sp_dot_populate_bi_fields]    Script Date: 1/5/2024 4:06:14 PM ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
 
@@ -88,7 +86,7 @@ BEGIN
 
 
     /* ---------------------------------------------------------------- 
-    POPULATE GrossVehicleWeight COLUMN 
+    POPULATE GrossVehicleWeight COLUMN *****
     -----------------------------------------------------------------*/
     
     /*Update 5th Wheel column in reporting.MDM_Assets table with 5th 
@@ -242,8 +240,7 @@ UPDATE reporting.MDM_Assets
         ) y
     ) AS u1
     ON reporting.MDM_Assets.asset_num = u1.asset_num
-
-                /* Add section to populate trailers that cross state lines regardless of date *****/
+    /* Add section to populate trailers that cross state lines regardless of date *****/
 
 
     /* ---------------------------------------------------------------- 
@@ -303,6 +300,31 @@ UPDATE reporting.MDM_Assets
     WHERE   manufacturer IS NOT NULL 
             AND serial_num IS NOT NULL 
             AND tire_size IS NOT NULL
+
+
+    /* ---------------------------------------------------------------- 
+    CREATE DOT ROADSIDE INSPECTION FLAG
+    -----------------------------------------------------------------*/
+
+    /* If asset has a roadside inspection listed in the USDOT_Inspections report 
+       then the dot_roadside_inspection flag is set to 1. */
+
+    UPDATE reporting.MDM_Assets
+    SET reporting.MDM_Assets.dot_roadside_inspection = 0
+
+    UPDATE reporting.MDM_Assets
+    SET reporting.MDM_Assets.dot_roadside_inspection = 1
+    FROM reporting.MDM_Assets
+    JOIN (
+        SELECT distinct asset_num
+        FROM reporting.MDM_Assets
+        JOIN [dbo].[USDOT_Inspections] 
+        ON [V1VIN] = reporting.MDM_Assets.serial_num 
+            OR [V2VIN] = reporting.MDM_Assets.serial_num
+        WHERE ([V1VIN] = serial_num OR [V2VIN] = serial_num)
+        AND status_desc IN ('WORKING', 'DOWN FOR REPAIR', 'IDLE', 'AVAILABLE', 'NEEDS REPAIR', 'DEPLOYED')
+    ) AS x
+    ON reporting.MDM_Assets.asset_num = x.asset_num
 
     /* ---------------------------------------------------------------- 
     CREATE FLAG FOR ASSETS WITH WORK ORDERS IN THE LAST 120 DAYS
