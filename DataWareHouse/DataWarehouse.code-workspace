@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "DataWarehouse"
+		},
+		{
+			"name": "mdmdb_DB_Project",
+			"path": "mdmdb_DB_Project"
+		}
+	],
+	"settings": {}
+}

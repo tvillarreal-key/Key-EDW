@@ -1,3 +1,9 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--DROP PROCEDURE [reporting].[sp_dot_populate_bi_fields];
 CREATE PROCEDURE [reporting].[sp_dot_populate_bi_fields] 
 AS
 BEGIN
@@ -17,6 +23,52 @@ BEGIN
             WHERE attr_code = 'TireSize') AS tire_attr
     ON reporting.MDM_Assets.asset_num = tire_attr.asset_num
 
+  /* ---------------------------------------------------------------- 
+    POPULATE TIRE SIZE 2 COLUMN 
+    -----------------------------------------------------------------*/
+
+    /*Update Tire Size column in reporting.MDM_Assets table with tire 
+    value listed in reporting.MDM_AssetAttr*/
+
+    UPDATE reporting.MDM_Assets 
+    SET reporting.MDM_Assets.tire_size2 = tire_attr2.attr_value
+    FROM reporting.MDM_Assets
+    JOIN    (SELECT * 
+            FROM reporting.MDM_AssetAttr
+            WHERE attr_code = 'TireSize2') AS tire_attr2
+    ON reporting.MDM_Assets.asset_num = tire_attr2.asset_num
+
+/* ---------------------------------------------------------------- 
+    POPULATE NUMBER OF AXLES COLUMN 
+    -----------------------------------------------------------------*/
+
+    /*Update Tire Size column in reporting.MDM_Assets table with
+    value listed in reporting.MDM_AssetAttr*/
+
+    UPDATE reporting.MDM_Assets 
+    SET reporting.MDM_Assets.number_of_axles = number_of_axles.attr_value
+    FROM reporting.MDM_Assets
+    JOIN    (SELECT * 
+            FROM reporting.MDM_AssetAttr
+            WHERE attr_code = 'Number of Axles') AS number_of_axles
+    ON reporting.MDM_Assets.asset_num = number_of_axles.asset_num
+
+
+/* ---------------------------------------------------------------- 
+    POPULATE LICENSE PLATE COLUMN 
+    -----------------------------------------------------------------*/
+
+    /*Update Tire Size column in reporting.MDM_Assets table with
+    value listed in reporting.MDM_AssetAttr*/
+
+    UPDATE reporting.MDM_Assets 
+    SET reporting.MDM_Assets.license_plate = license_plate.attr_value
+    FROM reporting.MDM_Assets
+    JOIN    (SELECT * 
+            FROM reporting.MDM_AssetAttr
+            WHERE attr_code = 'License Plate') AS license_plate
+    ON reporting.MDM_Assets.asset_num = license_plate.asset_num
+
     /* ---------------------------------------------------------------- 
     POPULATE 5TH WHEEL COLUMN
     -----------------------------------------------------------------*/
@@ -32,97 +84,164 @@ BEGIN
             WHERE attr_code = '5THWHEEL') AS fifth_wheel
     ON reporting.MDM_Assets.asset_num = fifth_wheel.asset_num
 
+
     /* ---------------------------------------------------------------- 
-    FLAG IF AN ASSET CROSSES STATE LINES
+    POPULATE GrossVehicleWeight COLUMN *****
     -----------------------------------------------------------------*/
-
-    /*There are currently two Motive reporting tables. reporting.Motive_IFTA_Trips
-    will be used moving forward, but reporting.MotiveMiles must be used for all
-    historical reporting prior to 08/01/23
     
-    motive_jurs is a full list of assets and their locations between both the 
-    Motive_IFTA_Trips table and the Motive Miles table. Motive Miles jurisdictions
-    must be cast as state abbreviations*/
+    /*Update 5th Wheel column in reporting.MDM_Assets table with 5th 
+    Wheel value listed in reporting.MDM_AssetAttr*/
 
-    /*Update crossed_state_lines flag in reporting.MDM_Assets. Set flag equal
-    to one if one asset exists accross one or more jurisdictions in the MotiveMiles
-    table.*/
-    UPDATE reporting.MDM_Assets
-    SET reporting.MDM_Assets.crosses_state_lines = 0
+    UPDATE reporting.MDM_Assets 
+    SET reporting.MDM_Assets.Gross_Vehicle_Weight = 
+        REPLACE(REPLACE(GrossVehicleWeight.attr_value,' LBS',''),',','') 
+    FROM reporting.MDM_Assets
+    JOIN    (SELECT * 
+            FROM reporting.MDM_AssetAttr
+            WHERE attr_code = 'GrossVehicleWeight') AS GrossVehicleWeight
+    ON reporting.MDM_Assets.asset_num = GrossVehicleWeight.asset_num
 
-    ;WITH motive_jurs AS (
-        SELECT asset_num, jurisdiction
-        FROM reporting.Motive_IFTA_Trips
-        UNION
-        SELECT  asset_num,  
-                jurisdiction =
-                CASE 
-                    WHEN jurisdiction = 'Alabama' THEN 'AL'
-                    WHEN jurisdiction = 'Alaska' THEN 'AK' 
-                    WHEN jurisdiction = 'Arizona' THEN 'AZ' 
-                    WHEN jurisdiction = 'Arkansas' THEN 'AR' 
-                    WHEN jurisdiction = 'California' THEN 'CA' 
-                    WHEN jurisdiction = 'Colorado' THEN 'CO' 
-                    WHEN jurisdiction = 'Connecticut' THEN 'CT' 
-                    WHEN jurisdiction = 'Delaware' THEN 'DE' 
-                    WHEN jurisdiction = 'District of Columbia' THEN 'DC' 
-                    WHEN jurisdiction = 'Florida' THEN 'FL' 
-                    WHEN jurisdiction = 'Georgia' THEN 'GA' 
-                    WHEN jurisdiction = 'Hawaii' THEN 'HI' 
-                    WHEN jurisdiction = 'Idaho' THEN 'ID' 
-                    WHEN jurisdiction = 'Illinois' THEN 'IL' 
-                    WHEN jurisdiction = 'Indiana' THEN 'IN' 
-                    WHEN jurisdiction = 'Iowa' THEN 'IA' 
-                    WHEN jurisdiction = 'Kansas' THEN 'KS' 
-                    WHEN jurisdiction = 'Kentucky' THEN 'KY' 
-                    WHEN jurisdiction = 'Louisiana' THEN 'LA' 
-                    WHEN jurisdiction = 'Maine' THEN 'ME' 
-                    WHEN jurisdiction = 'Maryland' THEN 'MD' 
-                    WHEN jurisdiction = 'Massachusetts' THEN 'MA' 
-                    WHEN jurisdiction = 'Michigan' THEN 'MI' 
-                    WHEN jurisdiction = 'Minnesota' THEN 'MN' 
-                    WHEN jurisdiction = 'Mississippi' THEN 'MS' 
-                    WHEN jurisdiction = 'Missouri' THEN 'MO' 
-                    WHEN jurisdiction = 'Montana' THEN 'MT' 
-                    WHEN jurisdiction = 'Nebraska' THEN 'NE' 
-                    WHEN jurisdiction = 'Nevada' THEN 'NV' 
-                    WHEN jurisdiction = 'New Hampshire' THEN 'NH' 
-                    WHEN jurisdiction = 'New Jersey' THEN 'NJ' 
-                    WHEN jurisdiction = 'New Mexico' THEN 'NM' 
-                    WHEN jurisdiction = 'New York' THEN 'NY' 
-                    WHEN jurisdiction = 'North Carolina' THEN 'NC' 
-                    WHEN jurisdiction = 'North Dakota' THEN 'ND' 
-                    WHEN jurisdiction = 'Ohio' THEN 'OH' 
-                    WHEN jurisdiction = 'Oklahoma' THEN 'OK' 
-                    WHEN jurisdiction = 'Oregon' THEN 'OR' 
-                    WHEN jurisdiction = 'Pennsylvania' THEN 'PA' 
-                    WHEN jurisdiction = 'Rhode Island' THEN 'RI' 
-                    WHEN jurisdiction = 'South Carolina' THEN 'SC' 
-                    WHEN jurisdiction = 'South Dakota' THEN 'SD' 
-                    WHEN jurisdiction = 'Tennessee' THEN 'TN' 
-                    WHEN jurisdiction = 'Texas' THEN 'TX' 
-                    WHEN jurisdiction = 'Utah' THEN 'UT' 
-                    WHEN jurisdiction = 'Vermont' THEN 'VT' 
-                    WHEN jurisdiction = 'Virginia' THEN 'VA' 
-                    WHEN jurisdiction = 'Washington' THEN 'WA' 
-                    WHEN jurisdiction = 'West Virginia' THEN 'WV' 
-                    WHEN jurisdiction = 'Wisconsin' THEN 'WI' 
-                    WHEN jurisdiction = 'Wyoming' THEN 'WY'
-                    WHEN jurisdiction = 'México' THEN 'MX' 
-                    ELSE NULL
-                END
-        FROM reporting.MotiveMiles
-    )
-    UPDATE reporting.MDM_Assets
+/* ---------------------------------------------------------------- 
+FLAG IF AN ASSET CROSSES STATE LINES
+-----------------------------------------------------------------*/
+
+/*There are currently two Motive reporting tables. reporting.Motive_IFTA_Trips
+will be used moving forward, but reporting.MotiveMiles must be used for all
+historical reporting prior to 08/01/23
+
+motive_jurs is a full list of assets and their locations between both the 
+Motive_IFTA_Trips table and the Motive Miles table. Motive Miles jurisdictions
+must be cast as state abbreviations*/
+
+/*Update crossed_state_lines flag in reporting.MDM_Assets. Set flag equal
+to one if one asset exists accross one or more jurisdictions in the MotiveMiles
+table.*/
+
+UPDATE reporting.MDM_Assets
+SET reporting.MDM_Assets.crosses_state_lines = 0
+-- updated 77 total
+UPDATE reporting.MDM_Assets
     SET reporting.MDM_Assets.crosses_state_lines = 1
     FROM reporting.MDM_Assets
     JOIN (
-        SELECT  asset_num, 
-                COUNT(DISTINCT jurisdiction) as jur_count
-        FROM motive_jurs
-        GROUP BY asset_num
-        HAVING COUNT(DISTINCT jurisdiction) > 1) AS csl_motive
-    ON reporting.MDM_Assets.asset_num = csl_motive.asset_num
+        -- UNIT 1 with a UNIT 2 that crosses state lines  
+        select distinct asset_num 
+        from (
+            select asset_num, trailer_asset_num, report_date, count(*) cnt
+            from (
+                select distinct t1.[asset_num], t3.[asset_class], [jurisdiction], t2.trailer_asset_num, CAST ([REPORT_DATE] as DATE) AS REPORT_DATE
+                FROM [reporting].[vw_dot_motive] t1, 
+                [reporting].[vw_dot_dvir] t2,
+                reporting.MDM_Assets t3
+                WHERE t1.[asset_num] = t2.asset_num
+                and t3.asset_num = t1.asset_num
+                and t2.trailer_asset_num is not null
+                and t2.trailer_asset_num != 'none_found'
+            ) x
+            group by asset_num, trailer_asset_num, report_date
+            having count(*) > 1
+        ) y
+        UNION
+        -- UNIT 2 pulled by a UNIT 1 that crosses state lines  
+        select distinct trailer_asset_num 
+        from (
+            select asset_num, trailer_asset_num, report_date, count(*) cnt
+            from (
+                select distinct t1.[asset_num], t3.[asset_class], [jurisdiction], t2.trailer_asset_num, CAST ([REPORT_DATE] as DATE) AS REPORT_DATE
+                FROM [reporting].[vw_dot_motive] t1, 
+                [reporting].[vw_dot_dvir] t2,
+                reporting.MDM_Assets t3
+                WHERE t1.[asset_num] = t2.asset_num
+                and t3.asset_num = t1.asset_num
+                and t2.trailer_asset_num is not null
+                and t2.trailer_asset_num != 'none_found'
+            ) x
+            group by asset_num, trailer_asset_num, report_date
+            having count(*) > 1
+        ) y
+        union
+        -- UNIT 1 without a UNIT 2 that crosses state lines
+        select distinct asset_num 
+        from (
+            select asset_num, report_date, count(*) cnt
+            from (
+                select distinct t1.[asset_num], t3.[asset_class], [jurisdiction], t2.trailer_asset_num, CAST ([REPORT_DATE] as DATE) AS REPORT_DATE
+                FROM [reporting].[vw_dot_motive] t1, 
+                [reporting].[vw_dot_dvir] t2,
+                reporting.MDM_Assets t3
+                WHERE t1.[asset_num] = t2.asset_num
+                and t3.asset_num = t1.asset_num
+                and t2.trailer_asset_num is null
+            ) x
+            group by asset_num, report_date
+            having count(*) > 1
+        ) y
+    ) AS u1
+    ON reporting.MDM_Assets.asset_num = u1.asset_num
+
+
+                /* ---------------------------------------------------------------- 
+FLAG IF AN ASSET CROSSES STATE LINES WITH TRAILER
+-----------------------------------------------------------------*/
+
+/*There are currently two Motive reporting tables. reporting.Motive_IFTA_Trips
+will be used moving forward, but reporting.MotiveMiles must be used for all
+historical reporting prior to 08/01/23
+
+motive_jurs is a full list of assets and their locations between both the 
+Motive_IFTA_Trips table and the Motive Miles table. Motive Miles jurisdictions
+must be cast as state abbreviations*/
+
+/*Update crossed_state_lines flag in reporting.MDM_Assets. Set flag equal
+to one if one asset exists accross one or more jurisdictions in the MotiveMiles
+table.*/
+
+UPDATE reporting.MDM_Assets
+SET reporting.MDM_Assets.crosses_state_lines_with_trailer = 0
+-- updated 77 total
+UPDATE reporting.MDM_Assets
+    SET reporting.MDM_Assets.crosses_state_lines_with_trailer = 1
+    FROM reporting.MDM_Assets
+    JOIN (
+        -- UNIT 1 with a UNIT 2 that crosses state lines  
+        select distinct asset_num 
+        from (
+            select asset_num, trailer_asset_num, report_date, count(*) cnt
+            from (
+                select distinct t1.[asset_num], t3.[asset_class], [jurisdiction], t2.trailer_asset_num, CAST ([REPORT_DATE] as DATE) AS REPORT_DATE
+                FROM [reporting].[vw_dot_motive] t1, 
+                [reporting].[vw_dot_dvir] t2,
+                reporting.MDM_Assets t3
+                WHERE t1.[asset_num] = t2.asset_num
+                and t3.asset_num = t1.asset_num
+                and t2.trailer_asset_num is not null
+                and t2.trailer_asset_num != 'none_found'
+            ) x
+            group by asset_num, trailer_asset_num, report_date
+            having count(*) > 1
+        ) y
+        UNION
+        -- UNIT 2 pulled by a UNIT 1 that crosses state lines  
+        select distinct trailer_asset_num 
+        from (
+            select asset_num, trailer_asset_num, report_date, count(*) cnt
+            from (
+                select distinct t1.[asset_num], t3.[asset_class], [jurisdiction], t2.trailer_asset_num, CAST ([REPORT_DATE] as DATE) AS REPORT_DATE
+                FROM [reporting].[vw_dot_motive] t1, 
+                [reporting].[vw_dot_dvir] t2,
+                reporting.MDM_Assets t3
+                WHERE t1.[asset_num] = t2.asset_num
+                and t3.asset_num = t1.asset_num
+                and t2.trailer_asset_num is not null
+                and t2.trailer_asset_num != 'none_found'
+            ) x
+            group by asset_num, trailer_asset_num, report_date
+            having count(*) > 1
+        ) y
+    ) AS u1
+    ON reporting.MDM_Assets.asset_num = u1.asset_num
+    /* Add section to populate trailers that cross state lines regardless of date *****/
+
 
     /* ---------------------------------------------------------------- 
     FLAG IF HAS TRAILER ATTACHED ON DVIR
@@ -181,6 +300,31 @@ BEGIN
     WHERE   manufacturer IS NOT NULL 
             AND serial_num IS NOT NULL 
             AND tire_size IS NOT NULL
+
+
+    /* ---------------------------------------------------------------- 
+    CREATE DOT ROADSIDE INSPECTION FLAG
+    -----------------------------------------------------------------*/
+
+    /* If asset has a roadside inspection listed in the USDOT_Inspections report 
+       then the dot_roadside_inspection flag is set to 1. */
+
+    UPDATE reporting.MDM_Assets
+    SET reporting.MDM_Assets.dot_roadside_inspection = 0
+
+    UPDATE reporting.MDM_Assets
+    SET reporting.MDM_Assets.dot_roadside_inspection = 1
+    FROM reporting.MDM_Assets
+    JOIN (
+        SELECT distinct asset_num
+        FROM reporting.MDM_Assets
+        JOIN [dbo].[USDOT_Inspections] 
+        ON [V1VIN] = reporting.MDM_Assets.serial_num 
+            OR [V2VIN] = reporting.MDM_Assets.serial_num
+        WHERE ([V1VIN] = serial_num OR [V2VIN] = serial_num)
+        AND status_desc IN ('WORKING', 'DOWN FOR REPAIR', 'IDLE', 'AVAILABLE', 'NEEDS REPAIR', 'DEPLOYED')
+    ) AS x
+    ON reporting.MDM_Assets.asset_num = x.asset_num
 
     /* ---------------------------------------------------------------- 
     CREATE FLAG FOR ASSETS WITH WORK ORDERS IN THE LAST 120 DAYS
@@ -266,4 +410,3 @@ BEGIN
 
 END;
 GO
-
