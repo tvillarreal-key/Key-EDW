@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "PCQDrovAgAh+XHNrOfJyjfd0OAVrWwvAL+oBBGQ9z8hkw7y45NCIwPuh7j3Y9AxkjmNg7KKZJPokpzi8u9Ti0A==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\mdmdb_DB_Project\\mdmdb_DB_Project.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
