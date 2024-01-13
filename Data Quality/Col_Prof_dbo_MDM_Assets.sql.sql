@@ -1,3 +1,4 @@
+-- Columnar Discovery Profile for a SQL Server table
 DECLARE @table_catalog NVARCHAR(128) = 'mdmdb';
 DECLARE @table_schema NVARCHAR(128) = 'Reporting';
 DECLARE @table_name NVARCHAR(128) = 'MDM_Assets';
