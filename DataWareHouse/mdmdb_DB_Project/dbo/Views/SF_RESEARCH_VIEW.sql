@@ -100,5 +100,6 @@ LEFT OUTER JOIN [dbo].[Salesforce_Jobs] SJ ON ST.[FX5__Job__c] = SJ.Id
 LEFT OUTER JOIN [dbo].[Salesforce_Invoice] SI ON ST.[Invoice__c] = SI.[ID]
 LEFT OUTER JOIN [dbo].[Salesforce_Account] SA ON SJ.[Bill_To__c] = SA.[ID]
 --WHERE ST.[FX5__Ticket_Date__c] > '08/16/2023'
+--WHERE ST.[FX5__Ticket_Date__c] > '08/16/2023'
 GO
 

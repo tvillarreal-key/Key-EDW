@@ -106,8 +106,8 @@ BEGIN
                                                 [name], notes, parent_asset_num, [path], restriction, 
                                                 type_id)
         SELECT  DOCUMENTID, CAST(DEFAULTATTACHMENT AS nvarchar(255)), CAST([FILENAME] AS nvarchar(255)), 
-                CAST(FILETYPE AS nvarchar(255)), CAST(FIXEDASSETID AS nvarchar(255)), KEX_EXPIRATIONDATETIME, 
-                CAST([NAME] AS nvarchar(255)), NOTES, CAST(OBJECTID AS nvarchar(255)), CAST([PATH] AS nvarchar(255)), 
+                CAST(FILETYPE AS nvarchar(255)), CAST(OBJECTID AS nvarchar(255)), KEX_EXPIRATIONDATETIME, 
+                CAST([NAME] AS nvarchar(255)), NOTES, ' ', CAST([PATH] AS nvarchar(255)), 
                 CAST(RESTRICTION AS nvarchar(255)), CAST(TYPEID AS nvarchar(255))
         FROM dbo.D365_AssetAttachments
 
