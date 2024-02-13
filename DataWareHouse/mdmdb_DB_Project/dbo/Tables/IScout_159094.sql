@@ -108,7 +108,8 @@ CREATE TABLE [dbo].[IScout_159094] (
     [R02_KES]          INT            NULL,
     [R02_3RDPARTY]     INT            NULL,
     [Deleted]          INT            DEFAULT ((0)) NULL,
-    [DeletedOn]        DATETIME       NULL
+    [DeletedOn]        DATETIME       NULL,
+    [Q_All_Defects]    NVARCHAR (5)   NULL
 );
 GO
 

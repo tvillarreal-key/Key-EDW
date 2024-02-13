@@ -1,0 +1,62 @@
+CREATE FUNCTION dbo.fn_GetStateAbbreviation (@state NVARCHAR(255))
+RETURNS NVARCHAR(2)
+AS
+BEGIN
+    RETURN 
+        CASE 
+            WHEN @state = 'Alabama' THEN 'AL'
+            WHEN @state = 'Alaska' THEN 'AK' 
+            WHEN @state = 'Arizona' THEN 'AZ' 
+            WHEN @state = 'Arkansas' THEN 'AR' 
+            WHEN @state = 'California' THEN 'CA' 
+            WHEN @state = 'Colorado' THEN 'CO' 
+            WHEN @state = 'Connecticut' THEN 'CT' 
+            WHEN @state = 'Delaware' THEN 'DE' 
+            WHEN @state = 'District of Columbia' THEN 'DC' 
+            WHEN @state = 'Florida' THEN 'FL' 
+            WHEN @state = 'Georgia' THEN 'GA' 
+            WHEN @state = 'Hawaii' THEN 'HI' 
+            WHEN @state = 'Idaho' THEN 'ID' 
+            WHEN @state = 'Illinois' THEN 'IL' 
+            WHEN @state = 'Indiana' THEN 'IN' 
+            WHEN @state = 'Iowa' THEN 'IA' 
+            WHEN @state = 'Kansas' THEN 'KS' 
+            WHEN @state = 'Kentucky' THEN 'KY' 
+            WHEN @state = 'Louisiana' THEN 'LA' 
+            WHEN @state = 'Maine' THEN 'ME' 
+            WHEN @state = 'Maryland' THEN 'MD' 
+            WHEN @state = 'Massachusetts' THEN 'MA' 
+            WHEN @state = 'Michigan' THEN 'MI' 
+            WHEN @state = 'Minnesota' THEN 'MN' 
+            WHEN @state = 'Mississippi' THEN 'MS' 
+            WHEN @state = 'Missouri' THEN 'MO' 
+            WHEN @state = 'Montana' THEN 'MT' 
+            WHEN @state = 'Nebraska' THEN 'NE' 
+            WHEN @state = 'Nevada' THEN 'NV' 
+            WHEN @state = 'New Hampshire' THEN 'NH' 
+            WHEN @state = 'New Jersey' THEN 'NJ' 
+            WHEN @state = 'New Mexico' THEN 'NM' 
+            WHEN @state = 'New York' THEN 'NY' 
+            WHEN @state = 'North Carolina' THEN 'NC' 
+            WHEN @state = 'North Dakota' THEN 'ND' 
+            WHEN @state = 'Ohio' THEN 'OH' 
+            WHEN @state = 'Oklahoma' THEN 'OK' 
+            WHEN @state = 'Oregon' THEN 'OR' 
+            WHEN @state = 'Pennsylvania' THEN 'PA' 
+            WHEN @state = 'Rhode Island' THEN 'RI' 
+            WHEN @state = 'South Carolina' THEN 'SC' 
+            WHEN @state = 'South Dakota' THEN 'SD' 
+            WHEN @state = 'Tennessee' THEN 'TN' 
+            WHEN @state = 'Texas' THEN 'TX' 
+            WHEN @state = 'Utah' THEN 'UT' 
+            WHEN @state = 'Vermont' THEN 'VT' 
+            WHEN @state = 'Virginia' THEN 'VA' 
+            WHEN @state = 'Washington' THEN 'WA' 
+            WHEN @state = 'West Virginia' THEN 'WV' 
+            WHEN @state = 'Wisconsin' THEN 'WI' 
+            WHEN @state = 'Wyoming' THEN 'WY' 
+            ELSE NULL
+        END
+END
+GO
+

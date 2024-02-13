@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[IScout_192337] (
     [S110_Visitors_Title]                   NVARCHAR (2048) NULL,
     [S111_Visitors_Full_Name]               NVARCHAR (2048) NULL,
     [S112_Visitors_Company]                 NVARCHAR (2048) NULL,
-    [S113_Visitors_Signature]               NVARCHAR (64)   NULL,
+    [S113_Visitors_Signature]               NVARCHAR (256)  NULL,
     [S114_Visitors_Time_Out]                NVARCHAR (512)  NULL,
     [S115_Crew_Members]                     NVARCHAR (64)   NULL,
     [S116_Crew_Assigned_Position_1]         NVARCHAR (MAX)  NULL,

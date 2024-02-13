@@ -30,11 +30,9 @@ CREATE TABLE [dbo].[MDM_Assets] (
     [MARE_CODE]               NVARCHAR (20)  NULL,
     [MARE_NAME]               NVARCHAR (100) NULL,
     [YARD_CODE]               NVARCHAR (20)  NULL,
-    [YARD_NAME]               NVARCHAR (100) NULL
+    [YARD_NAME]               NVARCHAR (100) NULL,
+    CONSTRAINT [PK_MDM_Assets] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 GO
 
-ALTER TABLE [dbo].[MDM_Assets]
-    ADD CONSTRAINT [PK_MDM_Assets] PRIMARY KEY CLUSTERED ([ID] ASC);
-GO
 
