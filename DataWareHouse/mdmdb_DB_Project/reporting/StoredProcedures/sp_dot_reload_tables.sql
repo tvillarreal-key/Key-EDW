@@ -138,7 +138,7 @@ BEGIN
                                         mechanics_signature, oncoming_driver_signature_requirement, driver_signature_date, 
                                         signature_driver_name, [signature], r01_comments, r01_inserted_on, r01_batch_id, r02_pre_trip, 
                                         r02_post_trip, r02_satisfactory, r02_defective, r02_na, r02_yes, r02_no, r02_kes, r02_3rd_party,
-                                        work_order_id)
+                                        work_order_id,q_all_defects)
         SELECT  link, report, report_number, CAST(report_date AS datetime), CAST(updated AS datetime), updated_time, [version],
                 observer, observer_emp_num, duration, CAST(latitude AS float), CAST(longitude AS float), CAST(temperature AS float), 
                 wind_speed, weather, score_percent, Q01, CAST(Q02 AS datetime), CAST(Q02_LAT AS float), CAST(Q02_LON AS float), 
@@ -147,7 +147,7 @@ BEGIN
                 Q57, Q58, Q59, Q60, Q61, Q62, Q63, Q64, Q65, Q66, Q67, Q68, Q69, Q70, Q71, Q72, Q73, Q74, Q75, Q76, Q77, Q78, 
                 CAST(Q79 AS datetime), Q80, Q81, Q82, Q83, Q84, CAST(Q85 AS datetime), Q86, Q87, R01_COMMENTS, R01_InsertedOn, 
                 R01_BatchID, R02_PRETRIP, R02_POSTTRIP, R02_SATISFACTORY, R02_DEFECTIVE, R02_NA, R02_YES, R02_NO, R02_KES, R02_3RDPARTY,
-                Q88_WorkOrderNum
+                Q88_WorkOrderNum,q_all_defects
         FROM dbo.IScout_159094
 
         -- UPDATE THE UPLOAD DATE
