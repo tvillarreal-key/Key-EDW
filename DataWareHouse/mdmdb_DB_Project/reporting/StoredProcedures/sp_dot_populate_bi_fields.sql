@@ -316,13 +316,21 @@ UPDATE reporting.MDM_Assets
     SET reporting.MDM_Assets.dot_roadside_inspection = 1
     FROM reporting.MDM_Assets
     JOIN (
-        SELECT distinct asset_num
-        FROM reporting.MDM_Assets
-        JOIN [dbo].[USDOT_Inspections] 
-        ON [V1VIN] = reporting.MDM_Assets.serial_num 
-            OR [V2VIN] = reporting.MDM_Assets.serial_num
-        WHERE ([V1VIN] = serial_num OR [V2VIN] = serial_num)
-        AND status_desc IN ('WORKING', 'DOWN FOR REPAIR', 'IDLE', 'AVAILABLE', 'NEEDS REPAIR', 'DEPLOYED')
+        SELECT distinct
+            da.Asset_Num,
+            da.Asset_Class,
+            da.Asset_Desc,
+            da.Serial_Num,
+            NULLIF(ui.V1VIN, '') AS V1VIN, 
+            NULLIF(ui.V2VIN, '') AS V2VIN, 
+            NULLIF(ui.Unit, '') AS Unit            
+        from dbo.USDOT_Inspections ui
+        left join reporting.MDM_Assets da on 
+        (ui.V1VIN = da.Serial_Num) OR
+        --and ui.V1VIN <>'' 
+        --and da.Serial_Num <> '') or 
+        (ui.V2VIN = da.Serial_Num)-- and ui.V2VIN <>'' 
+       -- and da.Serial_Num <>'')
     ) AS x
     ON reporting.MDM_Assets.asset_num = x.asset_num
 
