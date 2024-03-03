@@ -1,3 +1,9 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+--DROP PROCEDURE [reporting].[sp_dot_reload_tables]
 CREATE PROCEDURE [reporting].[sp_dot_reload_tables] 
 AS
 BEGIN 
@@ -5,13 +11,47 @@ BEGIN
         /* -------------------------------------------------- UPDATE THE ASSETS TABLE ---------------------------------------------------- */
         TRUNCATE TABLE reporting.MDM_Assets
 
-        INSERT INTO reporting.MDM_Assets    (asset_id, asset_num, asset_desc, asset_class, manufacturer, model, 
-                                        model_year, series, serial_num, [status], status_desc, source, marketed, 
-                                        revenue_track, parent_asset_num, child_relationship_type, loco_code, 
-                                        loco_name, loca_code, loca_name, mktp_code, mktp_name, lvl1_code, lvl1_name, 
-                                        lob_code, lob_name, dist_code, dist_name, mare_code, mare_name, yard_code, yard_name)
-        SELECT *
-        FROM dbo.MDM_Assets
+        INSERT INTO reporting.MDM_Assets    
+            (asset_id, asset_num, asset_desc, asset_class, manufacturer, model, 
+             model_year, series, serial_num, [status], status_desc, source, marketed, 
+             revenue_track, parent_asset_num, child_relationship_type, loco_code, 
+             loco_name, loca_code, loca_name, mktp_code, mktp_name, lvl1_code, lvl1_name, 
+             lob_code, lob_name, dist_code, dist_name, mare_code, mare_name, yard_code, yard_name)
+        SELECT 
+            NULLIF(id, '') AS id, 
+            NULLIF(asset_num, '') AS asset_num, 
+            NULLIF(asset_desc, '') AS asset_desc, 
+            NULLIF(asset_class, '') AS asset_class, 
+            NULLIF(manufacturer, '') AS manufacturer, 
+            NULLIF(model, '') AS model, 
+            NULLIF(model_year, '') AS model_year, 
+            NULLIF(series, '') AS series, 
+            NULLIF(serial_num, '') AS serial_num, 
+            NULLIF([status], '') AS [status], 
+            NULLIF(status_desc, '') AS status_desc, 
+            NULLIF(source, '') AS source, 
+            NULLIF(marketed, '') AS marketed, 
+            NULLIF(revenue_track, '') AS revenue_track, 
+            NULLIF(parent_asset_num, '') AS parent_asset_num, 
+            NULLIF(child_relationship_type, '') AS child_relationship_type, 
+            NULLIF(loco_code, '') AS loco_code, 
+            NULLIF(loco_name, '') AS loco_name, 
+            NULLIF(loca_code, '') AS loca_code, 
+            NULLIF(loca_name, '') AS loca_name, 
+            NULLIF(mktp_code, '') AS mktp_code, 
+            NULLIF(mktp_name, '') AS mktp_name, 
+            NULLIF(lvl1_code, '') AS lvl1_code, 
+            NULLIF(lvl1_name, '') AS lvl1_name, 
+            NULLIF(lob_code, '') AS lob_code, 
+            NULLIF(lob_name, '') AS lob_name, 
+            NULLIF(dist_code, '') AS dist_code, 
+            NULLIF(dist_name, '') AS dist_name, 
+            NULLIF(mare_code, '') AS mare_code, 
+            NULLIF(mare_name, '') AS mare_name, 
+            NULLIF(yard_code, '') AS yard_code, 
+            NULLIF(yard_name, '') AS yard_name
+        FROM dbo.MDM_Assets;
+
 
         -- UPDATE THE UPLOAD DATE
         UPDATE reporting.MDM_Assets
@@ -20,8 +60,13 @@ BEGIN
         /* ----------------------------------------------- UPDATE THE ASSET ATTRIBUTES TABLE ---------------------------------------------- */
         TRUNCATE TABLE reporting.MDM_AssetAttr
 
-        INSERT INTO reporting.MDM_AssetAttr (asset_id, asset_num, attr_code, attr_value)
-        SELECT *
+        INSERT INTO reporting.MDM_AssetAttr 
+            (asset_id, asset_num, attr_code, attr_value)
+        SELECT 
+            NULLIF(asset_id, '') AS asset_id, 
+            NULLIF(asset_num, '') AS asset_num, 
+            NULLIF(attrcode, '') AS attr_code, 
+            NULLIF(attrvalue, '') AS attr_value 
         FROM dbo.MDM_AssetAttr
 
         -- UPDATE THE UPLOAD DATE
@@ -160,4 +205,3 @@ BEGIN
         SELECT TOP 10 * FROM reporting.MDM_Assets
 END;
 GO
-
