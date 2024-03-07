@@ -2,8 +2,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- DROP TABLE [dbo].[Integration_AuditLog]
-CREATE TABLE [dbo].[Integration_AuditLog](
+-- DROP TABLE [metricsvault].[Integration_AuditLog]
+CREATE TABLE [metricsvault].[Integration_AuditLog](
 	[LogSequence] [bigint],
 	[Integration_MethodName] [nvarchar](100) NULL,
 	[TriggerType] [nvarchar](50) NULL,
@@ -32,8 +32,8 @@ CREATE TABLE [dbo].[Integration_AuditLog](
 ) ON [PRIMARY]
 GO
 
--- Drop SEQUENCE LogSequence
-CREATE SEQUENCE dbo.Integration_AuditLogSeq
+-- Drop SEQUENCE metricsvault.Integration_AuditLogSeq
+CREATE SEQUENCE metricsvault.Integration_AuditLogSeq
     AS BIGINT
     START WITH 1
     INCREMENT BY 1;

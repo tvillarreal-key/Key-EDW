@@ -28,8 +28,8 @@ INSERT INTO [dbo].[Integration_AuditLog] (
 )
 VALUES (
     NEXT VALUE FOR dbo.Integration_AuditLogSeq, --LogSequence
-    'Boomi', -- Integration_MethodName
-    'Boomi Schedule', -- TriggerType -- other options Boomi on-demand; Boomi hourly; Boomi Streaming
+    'ADF Pipeline', -- Integration_MethodName
+    'PowerAutomate Schedule', -- TriggerType -- other options Boomi on-demand; Boomi hourly; Boomi Streaming
     'MDM_Assets_Load_Daily', -- PipelineName
     '123456789', -- TriggerId  -- Boomi Schedule ID captured at runtime
     'DWH Daily Load', -- TriggerName -- Boomi Schedule Name
