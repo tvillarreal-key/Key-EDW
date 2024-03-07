@@ -1,0 +1,8 @@
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\bin\Debug\DatabaseProject-stgdb-DEV.dacpac
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\DatabaseProject-stgdb-DEV.sqlproj.AssemblyReference.cache
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\Model.xml
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\refactor.xml
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\postdeploy.sql
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\predeploy.sql
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\DatabaseProject-stgdb-DEV.dll
+c:\Users\tvillarreal\OneDrive\Work Files\Key Energy\Key-EDW\DataWareHouse\DatabaseProject-stgdb-DEV\obj\Debug\DatabaseProject-stgdb-DEV.pdb

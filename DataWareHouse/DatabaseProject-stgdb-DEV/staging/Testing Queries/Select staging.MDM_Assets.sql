@@ -59,4 +59,4 @@ SELECT TOP (1000)
       ,[UsedByRigNum]
       ,[Source_LastUpdateDate]
       ,[Source_LastUpdateBy]
-  FROM [raw].[MDM_Assets]
+  FROM [staging].[MDM_Assets]

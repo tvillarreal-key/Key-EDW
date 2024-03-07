@@ -1,5 +1,6 @@
-CREATE TABLE [staging].[MDM_Assets] (
-    [AssetNumHash]            AS             (CONVERT([nvarchar](32),hashbytes('MD5',[Asset_Num]),(2))),
+--DROP TABLE [raw].[MDM_Assets];
+CREATE TABLE [raw].[MDM_Assets] (
+    [AssetNumHash]            nvarchar(32) NOT NULL,
     [StagingLoadTimestamp]    DATETIME2 (7)  NULL,
     [StagingSourceSystem]     NVARCHAR (50)  NULL,
     [RawLoadTimestamp]        DATETIME2 (7)  NULL,
@@ -62,7 +63,7 @@ CREATE TABLE [staging].[MDM_Assets] (
 );
 GO
 
-ALTER TABLE [staging].[MDM_Assets]
+ALTER TABLE [raw].[MDM_Assets]
     ADD CONSTRAINT [PK_MDM_Assets] PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
