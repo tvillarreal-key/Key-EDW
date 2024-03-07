@@ -1,4 +1,4 @@
-SELECT TOP (1000) [LogSequence]
+SELECT [LogSequence]
       ,[Integration_MethodName]
       ,[TriggerType]
       ,[PipelineName]
@@ -24,4 +24,3 @@ SELECT TOP (1000) [LogSequence]
       ,[ErrorSeverity]
       ,[ErrorCategory]
   FROM [dbo].[Integration_AuditLog]
-
