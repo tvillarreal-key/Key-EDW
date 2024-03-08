@@ -1,5 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- DROP TABLE [staging].[MDM_Assets] 
 CREATE TABLE [staging].[MDM_Assets] (
-    [AssetNumHash]            AS             (CONVERT([nvarchar](32),hashbytes('MD5',[Asset_Num]),(2))),
+    [AssetsHash]            
+        AS (CONVERT([nvarchar](32),hashbytes('MD5',
+		UPPER(CONCAT(
+			RTRIM(LTRIM(COALESCE(ID, ''))), ';',
+			RTRIM(LTRIM(COALESCE(Asset_Num,'')))
+			))
+		),2)),
     [StagingLoadTimestamp]    DATETIME2 (7)  NULL,
     [StagingSourceSystem]     NVARCHAR (50)  NULL,
     [RawLoadTimestamp]        DATETIME2 (7)  NULL,
@@ -60,9 +71,5 @@ CREATE TABLE [staging].[MDM_Assets] (
     [Source_LastUpdateDate]   DATETIME2 (7)  NULL,
     [Source_LastUpdateBy]     NVARCHAR (128) NULL
 );
-GO
-
-ALTER TABLE [staging].[MDM_Assets]
-    ADD CONSTRAINT [PK_MDM_Assets] PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 

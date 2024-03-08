@@ -1,62 +1,27 @@
-SELECT TOP (1000) 
-      [AssetNumHash]
-      ,[StagingLoadTimestamp]
-      ,[StagingSourceSystem]
-      ,[RawLoadTimestamp]
-      ,[EffectiveStartDate]
-      ,[EffectiveEndDate]
-      ,[CuratedLoadTimestamp]
-      ,[CuratedTransformedBy]
-      ,[ID]
-      ,[Asset_Num]
-      ,[Asset_Desc]
-      ,[Asset_Class]
-      ,[Manufacturer]
-      ,[Model]
-      ,[Model_Year]
-      ,[Series]
-      ,[Serial_Num]
-      ,[Status]
-      ,[Status_Desc]
-      ,[Source]
-      ,[Marketed]
-      ,[Revenue_Track]
-      ,[Parent_Asset_Num]
-      ,[Child_Relationship_Type]
-      ,[LOCO_CODE]
-      ,[LOCO_NAME]
-      ,[LOCA_CODE]
-      ,[LOCA_NAME]
-      ,[MKTP_CODE]
-      ,[MKTP_NAME]
-      ,[LVL1_CODE]
-      ,[LVL1_NAME]
-      ,[LOB_CODE]
-      ,[LOB_NAME]
-      ,[DIST_CODE]
-      ,[DIST_NAME]
-      ,[MARE_CODE]
-      ,[MARE_NAME]
-      ,[YARD_CODE]
-      ,[YARD_NAME]
-      ,[W_Status]
-      ,[Crew_Needed]
-      ,[Avail_Date]
-      ,[LastWT_Date]
-      ,[Mod_Date]
-      ,[Mod_User]
-      ,[Note]
-      ,[Customer]
-      ,[JobType]
-      ,[Supervisor]
-      ,[Operator]
-      ,[Directions]
-      ,[CompanyMan]
-      ,[CompanyManPhone]
-      ,[Daylight24HR]
-      ,[Size]
-      ,[UsedByRigYard]
-      ,[UsedByRigNum]
-      ,[Source_LastUpdateDate]
-      ,[Source_LastUpdateBy]
-  FROM [raw].[MDM_Assets]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- DROP TABLE [staging].[MDM_AssetAttr]
+CREATE TABLE [staging].[MDM_AssetAttr](
+    [AssetAttrHash]            
+        AS (CONVERT([nvarchar](32),hashbytes('MD5',
+		UPPER(CONCAT(
+			RTRIM(LTRIM(COALESCE(Asset_ID, ''))), ';',
+			RTRIM(LTRIM(COALESCE(Asset_Num,''))), ';',
+			RTRIM(LTRIM(COALESCE(AttrCode,'')))
+			))
+		),2)),
+    [StagingLoadTimestamp]    DATETIME2 (7)  NULL,
+    [StagingSourceSystem]     NVARCHAR (50)  NULL,
+    [RawLoadTimestamp]        DATETIME2 (7)  NULL,
+    [EffectiveStartDate]      DATE           NULL,
+    [EffectiveEndDate]        DATE           NULL,
+    [CuratedLoadTimestamp]    DATETIME2 (7)  NULL,
+    [CuratedTransformedBy]    NVARCHAR (200) NULL,
+	[Asset_ID] [int] NOT NULL,
+	[Asset_Num] [nvarchar](60) NOT NULL,
+	[AttrCode] [nvarchar](50) NOT NULL,
+	[AttrValue] [nvarchar](max) NULL
+) ON [PRIMARY] 
+GO
