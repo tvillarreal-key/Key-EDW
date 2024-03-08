@@ -1,4 +1,4 @@
-REATE PROCEDURE [metricsvault].[usp_InsertIntegrationAuditLog]
+CREATE PROCEDURE [metricsvault].[usp_InsertIntegrationAuditLog]
     @LogSequence bigint,
     @Integration_MethodName nvarchar(100),
     @TriggerType nvarchar(50),
