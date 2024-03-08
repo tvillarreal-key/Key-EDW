@@ -1,4 +1,5 @@
-CREATE PROCEDURE [metricsvault].[usp_InsertIntegrationAuditLog]
+--DROP PROCEDURE [metricsvault].[us_InsertIntegrationAuditLog]
+CREATE PROCEDURE [metricsvault].[us_InsertIntegrationAuditLog]
     @LogSequence bigint,
     @Integration_MethodName nvarchar(100),
     @TriggerType nvarchar(50),
