@@ -2,18 +2,13 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- DROP TABLE [invalidated].[MDM_Assets] 
+DROP TABLE IF EXISTS [invalidated].[MDM_Assets] 
+GO
 CREATE TABLE [invalidated].[MDM_Assets] (
-    [AssetsHash]            
-        AS (CONVERT([nvarchar](32),hashbytes('MD5',
-		UPPER(CONCAT(
-			RTRIM(LTRIM(COALESCE(ID, ''))), ';',
-			RTRIM(LTRIM(COALESCE(Asset_Num,'')))
-			))
-		),2)),
-    [StagingLoadTimestamp]    DATETIME2 (7)  NULL,
-    [StagingSourceSystem]     NVARCHAR (50)  NULL,
-    [RawLoadTimestamp]        DATETIME2 (7)  NULL,
+    [AssetsHash]              NVARCHAR(32)   NOT NULL,
+    [StagingLoadTimestamp]    DATETIME2 (7)  NOT NULL,
+    [StagingSourceSystem]     NVARCHAR (50)  NOT NULL,
+    [RawLoadTimestamp]        DATETIME2 (7)  NOT NULL,
     [EffectiveStartDate]      DATE           NULL,
     [EffectiveEndDate]        DATE           NULL,
     [CuratedLoadTimestamp]    DATETIME2 (7)  NULL,
@@ -34,22 +29,22 @@ CREATE TABLE [invalidated].[MDM_Assets] (
     [Revenue_Track]           BIT            NULL,
     [Parent_Asset_Num]        NVARCHAR (20)  NULL,
     [Child_Relationship_Type] NVARCHAR (80)  NULL,
-    [LOCO_CODE]               NVARCHAR (20)  NULL,
-    [LOCO_NAME]               NVARCHAR (100) NULL,
-    [LOCA_CODE]               NVARCHAR (20)  NULL,
-    [LOCA_NAME]               NVARCHAR (100) NULL,
-    [MKTP_CODE]               NVARCHAR (20)  NULL,
-    [MKTP_NAME]               NVARCHAR (100) NULL,
-    [LVL1_CODE]               NVARCHAR (20)  NULL,
-    [LVL1_NAME]               NVARCHAR (100) NULL,
-    [LOB_CODE]                NVARCHAR (20)  NULL,
-    [LOB_NAME]                NVARCHAR (100) NULL,
-    [DIST_CODE]               NVARCHAR (20)  NULL,
-    [DIST_NAME]               NVARCHAR (100) NULL,
-    [MARE_CODE]               NVARCHAR (20)  NULL,
-    [MARE_NAME]               NVARCHAR (100) NULL,
-    [YARD_CODE]               NVARCHAR (20)  NULL,
-    [YARD_NAME]               NVARCHAR (100) NULL,
+    [Loco_Code]               NVARCHAR (20)  NULL,
+    [Loco_Name]               NVARCHAR (100) NULL,
+    [Loca_Code]               NVARCHAR (20)  NULL,
+    [Loca_Name]               NVARCHAR (100) NULL,
+    [MKTP_Code]               NVARCHAR (20)  NULL,
+    [MKTP_Name]               NVARCHAR (100) NULL,
+    [LVL1_Code]               NVARCHAR (20)  NULL,
+    [LVL1_Name]               NVARCHAR (100) NULL,
+    [LOB_Code]                NVARCHAR (20)  NULL,
+    [LOB_Name]                NVARCHAR (100) NULL,
+    [Dist_Code]               NVARCHAR (20)  NULL,
+    [Dist_Name]               NVARCHAR (100) NULL,
+    [Mare_Code]               NVARCHAR (20)  NULL,
+    [Mare_Name]               NVARCHAR (100) NULL,
+    [Yard_Code]               NVARCHAR (20)  NULL,
+    [Yard_Name]               NVARCHAR (100) NULL,
     [W_Status]                NVARCHAR (10)  NULL,
     [Crew_Needed]             BIT            NULL,
     [Avail_Date]              DATE           NULL,
@@ -69,7 +64,11 @@ CREATE TABLE [invalidated].[MDM_Assets] (
     [UsedByRigYard]           NVARCHAR (20)  NULL,
     [UsedByRigNum]            NVARCHAR (20)  NULL,
     [Source_LastUpdateDate]   DATETIME2 (7)  NULL,
-    [Source_LastUpdateBy]     NVARCHAR (128) NULL
-);
+    [Source_LastUpdateBy]     NVARCHAR (128) NULL,
+    CONSTRAINT [PK_MDM_Assets] PRIMARY KEY NONCLUSTERED
+    (
+        [ID], [ASSet_Num] ASC
+    )
+)
 GO
 

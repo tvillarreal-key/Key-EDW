@@ -2,19 +2,23 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
--- DROP TABLE [curated].[MDM_AssetAttr] 
-CREATE TABLE [curated].[MDM_AssetAttr](
-	[AssetAttrHash]  AS (CONVERT([nvarchar](32),hashbytes('MD5',upper(concat(rtrim(ltrim(coalesce([Asset_ID],''))),';',rtrim(ltrim(coalesce([Asset_Num],''))),';',rtrim(ltrim(coalesce([AttrCode],'')))))),(2))),
-	[StagingLoadTimestamp] [datetime2](7) NULL,
-	[StagingSourceSystem] [nvarchar](50) NULL,
-	[RawLoadTimestamp] [datetime2](7) NULL,
-	[EffectiveStartDate] [date] NULL,
-	[EffectiveEndDate] [date] NULL,
-	[CuratedLoadTimestamp] [datetime2](7) NULL,
-	[CuratedTransformedBy] [nvarchar](200) NULL,
-	[Asset_ID] [int] NOT NULL,
-	[Asset_Num] [nvarchar](60) NOT NULL,
-	[AttrCode] [nvarchar](50) NOT NULL,
-	[AttrValue] [nvarchar](max) NULL
-) ON [PRIMARY] 
+DROP TABLE IF EXISTS [curated].[MDM_AssetAttr]
 GO
+CREATE TABLE [curated].[MDM_AssetAttr](
+    [AssetsHash]              NVARCHAR(32)   NOT NULL,
+    [StagingLoadTimestamp]    DATETIME2 (7)  NOT NULL,
+    [StagingSourceSystem]     NVARCHAR (50)  NOT NULL,
+    [RawLoadTimestamp]        DATETIME2 (7)  NOT NULL,
+    [EffectiveStartDate]      DATE           NULL,
+    [EffectiveEndDate]        DATE           NULL,
+    [CuratedLoadTimestamp]    DATETIME2 (7)  NOT NULL,
+    [CuratedTransformedBy]    NVARCHAR (200) NOT NULL,
+	[Asset_ID] 				  INT	 		 NOT NULL,
+	[Asset_Num] 			  NVARCHAR (60)  NOT NULL,
+	[AttrCode] 				  NVARCHAR (50)  NOT NULL,
+	[AttrValue] 			  NVARCHAR (max) NULL,
+    CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED
+    (
+        [Asset_ID], [Asset_Num], [AttrCode] ASC
+    )
+)
