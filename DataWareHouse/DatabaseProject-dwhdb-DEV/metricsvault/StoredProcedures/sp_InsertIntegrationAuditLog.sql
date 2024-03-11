@@ -1,5 +1,10 @@
---DROP PROCEDURE [metricsvault].[us_InsertIntegrationAuditLog]
-CREATE PROCEDURE [metricsvault].[us_InsertIntegrationAuditLog]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE [metricsvault].[sp_InsertIntegrationAuditLog]
+GO
+CREATE PROCEDURE [metricsvault].[sp_InsertIntegrationAuditLog]
     @LogSequence bigint,
     @Integration_MethodName nvarchar(100),
     @TriggerType nvarchar(50),
