@@ -2,10 +2,10 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP PROCEDURE [metricsvault].[sp_InsertIntegrationAuditLog]
+--DROP PROCEDURE [metricsvault].[sp_InsertIntegrationAuditLog]
 GO
 CREATE PROCEDURE [metricsvault].[sp_InsertIntegrationAuditLog]
-    @LogSequence bigint,
+    @SeqValue bigint,
     @Integration_MethodName nvarchar(100),
     @TriggerType nvarchar(50),
     @PipelineName nvarchar(100),
@@ -62,7 +62,7 @@ BEGIN
     )
     VALUES
     (
-        @LogSequence,
+        @SeqValue,
         @Integration_MethodName,
         @TriggerType,
         @PipelineName,
@@ -91,4 +91,3 @@ BEGIN
 END;
 
 GO
-
