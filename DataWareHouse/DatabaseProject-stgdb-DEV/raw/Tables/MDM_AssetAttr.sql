@@ -5,7 +5,7 @@ GO
 DROP TABLE IF EXISTS [raw].[MDM_AssetAttr]
 GO
 CREATE TABLE [raw].[MDM_AssetAttr](
-    [AssetsHash]              NVARCHAR(32)   NOT NULL,
+    [AssetsAttrHash]          NVARCHAR(32)   NOT NULL,
     [StagingLoadTimestamp]    DATETIME2 (7)  NOT NULL,
     [StagingSourceSystem]     NVARCHAR (50)  NOT NULL,
     [RawLoadTimestamp]        DATETIME2 (7)  NOT NULL,
@@ -19,6 +19,6 @@ CREATE TABLE [raw].[MDM_AssetAttr](
 	[AttrValue] 			  NVARCHAR (max) NULL,
     CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED
     (
-        [Asset_ID], [Asset_Num], [AttrCode] ASC
+        [AssetsAttrHash] ASC
     )
 )
