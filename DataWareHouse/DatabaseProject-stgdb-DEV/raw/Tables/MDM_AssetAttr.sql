@@ -2,23 +2,27 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [raw].[MDM_AssetAttr]
+DROP TABLE IF EXISTS [raw].[MDM_AssetAttr] 
 GO
 CREATE TABLE [raw].[MDM_AssetAttr](
-    [AssetsAttrHash]          NVARCHAR(32)   NOT NULL,
-    [StagingLoadTimestamp]    DATETIME2 (7)  NOT NULL,
-    [StagingSourceSystem]     NVARCHAR (50)  NOT NULL,
-    [RawLoadTimestamp]        DATETIME2 (7)  NOT NULL,
-    [EffectiveStartDate]      DATE           NULL,
-    [EffectiveEndDate]        DATE           NULL,
-    [CuratedLoadTimestamp]    DATETIME2 (7)  NULL,
-    [CuratedTransformedBy]    NVARCHAR (200) NULL,
-	[Asset_ID] 				  INT	 		 NOT NULL,
-	[Asset_Num] 			  NVARCHAR (60)  NOT NULL,
-	[AttrCode] 				  NVARCHAR (50)  NOT NULL,
-	[AttrValue] 			  NVARCHAR (max) NULL,
-    CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED
-    (
-        [AssetsAttrHash] ASC
-    )
-)
+	[AssetAttrHash] [nvarchar](32) NOT NULL,
+	[StagingLoadTimestamp] [datetime2](7) NOT NULL,
+	[StagingSourceSystem] [nvarchar](50) NOT NULL,
+	[RawLoadTimestamp] [datetime2](7) NULL,
+	[EffectiveStartDate] [date] NULL,
+	[EffectiveEndDate] [date] NULL,
+	[CuratedLoadTimestamp] [datetime2](7) NULL,
+	[CuratedTransformedBy] [nvarchar](200) NULL,
+	[Asset_ID] [int] NOT NULL,
+	[Asset_Num] [nvarchar](60) NOT NULL,
+	[AttrCode] [nvarchar](50) NOT NULL,
+	[AttrValue] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ALTER TABLE [raw].[MDM_AssetAttr] ADD  CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED 
+(
+	[AssetAttrHash] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
