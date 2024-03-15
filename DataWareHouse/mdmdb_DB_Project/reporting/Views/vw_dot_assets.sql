@@ -18,7 +18,8 @@ WHERE status_desc IN ('WORKING', 'DOWN FOR REPAIR', 'IDLE', 'AVAILABLE', 'NEEDS 
 (
 
 -- In scope assets TRUK, BULK, CRAU, PUMP, CTU, SPEC, WIRU
-  asset_class IN ('TRUK', 'BULK', 'CRAU', 'CTU', 'WIRU') OR
+--  asset_class IN ('TRUK', 'BULK', 'CRAU', 'CTU', 'WIRU') OR
+  asset_class IN ('TRUK', 'BULK', 'CRAU', 'CTU') OR
 -- All DOT roadside inspections are automatically DOT in scope
   dot_roadside_inspection = 1 OR
 -- Trailers where 5th wheel is set to yes
