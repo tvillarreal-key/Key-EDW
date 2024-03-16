@@ -12,14 +12,16 @@ CREATE TABLE [raw].[MDM_AssetAttr](
 	[Asset_ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
 	[AttrCode] [nvarchar](50) NOT NULL,
-	[AttrValue] [nvarchar](max) NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-ALTER TABLE [raw].[MDM_AssetAttr] ADD  CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED 
+	[AttrValue] [nvarchar](max) NULL,
+CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED 
+(
+	[Asset_Num] ASC,
+    [AttrCode] ASC
+) ON [PRIMARY],
+CONSTRAINT [UK_MDM_AssetAttr] UNIQUE NONCLUSTERED 
 (
 	[AssetAttrHashKey] ASC,
-	[LoadDate] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+    [LoadDate] ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
 GO

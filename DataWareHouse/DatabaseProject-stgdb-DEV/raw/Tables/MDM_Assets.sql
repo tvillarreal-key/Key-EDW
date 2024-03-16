@@ -60,14 +60,15 @@ CREATE TABLE [raw].[MDM_Assets](
 	[UsedByRigYard] [nvarchar](20) NULL,
 	[UsedByRigNum] [nvarchar](20) NULL,
 	[Source_LastUpdateDate] [datetime2](7) NULL,
-	[Source_LastUpdateBy] [nvarchar](128) NULL
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-ALTER TABLE [raw].[MDM_Assets] ADD  CONSTRAINT [PK_MDM_Assets] PRIMARY KEY NONCLUSTERED 
+	[Source_LastUpdateBy] [nvarchar](128) NULL,
+CONSTRAINT [PK_MDM_AssetNum] PRIMARY KEY NONCLUSTERED 
+(
+	[Asset_Num] ASC
+) ON [PRIMARY],
+CONSTRAINT [UK_MDM_AssetNum] UNIQUE NONCLUSTERED 
 (
 	[AssetsHashKey] ASC,
-	[LoadDate] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+    [LoadDate] ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
 GO
