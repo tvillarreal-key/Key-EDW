@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS [raw].[MDM_Assets]
 GO
 CREATE TABLE [raw].[MDM_Assets](
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
+	[AssetsChkSum] [nvarchar](32) NOT NULL,
 	[LoadDate] [datetime2](7) NOT NULL,
 	[SourceSystem] [nvarchar](50) NOT NULL,
 	[LastSeenDate] [datetime2](7) NOT NULL,
