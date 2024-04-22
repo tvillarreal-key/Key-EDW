@@ -64,12 +64,8 @@ CREATE TABLE [raw].[MDM_Assets](
 	[Source_LastUpdateBy] [nvarchar](128) NULL,
 CONSTRAINT [PK_MDM_AssetNum] PRIMARY KEY NONCLUSTERED 
 (
-	[Asset_Num] ASC
-) ON [PRIMARY],
-CONSTRAINT [UK_MDM_AssetNum] UNIQUE NONCLUSTERED 
-(
-	[AssetsHashKey] ASC,
+	[Asset_Num] ASC,
     [LoadDate] ASC
-) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY]) 
+ON [PRIMARY]
 GO

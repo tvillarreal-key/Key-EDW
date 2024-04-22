@@ -17,12 +17,8 @@ CREATE TABLE [raw].[MDM_AssetAttr](
 CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED 
 (
 	[Asset_Num] ASC,
-    [AttrCode] ASC
-) ON [PRIMARY],
-CONSTRAINT [UK_MDM_AssetAttr] UNIQUE NONCLUSTERED 
-(
-	[AssetAttrHashKey] ASC,
+    [AttrCode] ASC,
     [LoadDate] ASC
-) ON [PRIMARY]
+) ON [PRIMARY],
 ) ON [PRIMARY]
 GO
