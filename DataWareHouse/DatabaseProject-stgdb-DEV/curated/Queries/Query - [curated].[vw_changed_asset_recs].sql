@@ -1,11 +1,4 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-DROP VIEW IF EXISTS [raw].[vw_latest_raw_assets]
-GO
-CREATE VIEW [raw].[vw_latest_raw_assets] AS
-SELECT [AssetsHashKey]
+SELECT TOP (1000) [AssetsHashKey]
       ,[AssetsChkSum]
       ,[LoadDate]
       ,[SourceSystem]
@@ -62,11 +55,11 @@ SELECT [AssetsHashKey]
       ,[UsedByRigNum]
       ,[Source_LastUpdateDate]
       ,[Source_LastUpdateBy]
-  FROM [raw].[MDM_Assets]
-  WHERE LoadDate IN
-    (
-        SELECT MAX(LoadDate) MaxLoadDate
-        FROM raw.MDM_Assets
-    )
+  FROM [curated].[vw_changed_asset_recs]
+
+SELECT Asset_Desc, LEN(Asset_Desc) Length1, COUNT(*) CNT 
+FROM [curated].[vw_changed_asset_recs]
+GROUP BY Asset_Desc, LEN(Asset_Desc) 
+ORDER BY 2 ASC
 ;
-GO
+

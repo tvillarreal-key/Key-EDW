@@ -1,0 +1,30 @@
+SELECT [LogSequence]
+      ,[Integration_MethodName]
+      ,[TriggerType]
+      ,[PipelineName]
+      ,[TriggerId]
+      ,[TriggerName]
+      ,[TriggerTime]
+      ,[SourceType]
+      ,[SourceSchema]
+      ,[SourceName]
+      ,[TargetType]
+      ,[TargetSchema]
+      ,[TargetName]
+      ,[RowsRead]
+      ,[RowsWritten]
+      ,[ExecutionRunId]
+      ,[ExecutionStatus]
+      ,[ExecutionStartTime]
+      ,[ExecutionEndTime]
+      ,[ExecutionRunDurationInSecs]
+      ,[ErrorCode]
+      ,[ErrorName]
+      ,[ErrorSeverity]
+      ,[ErrorCategory]
+  FROM [metricsvault].[Integration_AuditLog]
+  WHERE LogSequence > 255
+  --AND [ExecutionRunID] = '606d2a9e-3009-4847-be0b-c82bd58c2885' 
+  order by 1
+  ;
+
