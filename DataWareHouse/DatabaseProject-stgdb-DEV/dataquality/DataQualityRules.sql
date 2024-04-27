@@ -2,9 +2,9 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [curated].[DataQualityRules_Tmp] 
+DROP TABLE IF EXISTS [dataquality].[DataQualityRules] 
 GO
-CREATE TABLE [curated].[DataQualityRules_Tmp](
+CREATE TABLE [dataquality].[DataQualityRules](
     RuleID INT IDENTITY (1, 1) NOT NULL,
     RuleName VARCHAR(255) NOT NULL,
     RuleType VARCHAR(255) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE [curated].[DataQualityRules_Tmp](
 GO
 SET ANSI_PADDING ON
 GO
-ALTER TABLE [curated].[DataQualityRules_Tmp] ADD  CONSTRAINT [PK_DataQualityRules_Tmp] PRIMARY KEY NONCLUSTERED 
+ALTER TABLE [dataquality].[DataQualityRules] ADD  CONSTRAINT [PK_DataQualityRules] PRIMARY KEY NONCLUSTERED 
 (
 	[RuleName] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]

@@ -1,7 +1,7 @@
 USE [stgdb-DEV]
 GO
 
-INSERT INTO [curated].[DataQualityRules]
+INSERT INTO [dataquality].[DataQualityRules]
            ([RuleName]
            ,[RuleType]
            ,[RuleDefinition]
@@ -16,7 +16,7 @@ INSERT INTO [curated].[DataQualityRules]
 		   ,'1'
 		   ,'3')
 GO
-INSERT INTO [curated].[DataQualityRules]
+INSERT INTO [dataquality].[DataQualityRules]
            ([RuleName]
            ,[RuleType]
            ,[RuleDefinition]
@@ -31,7 +31,7 @@ INSERT INTO [curated].[DataQualityRules]
 		   ,'1'
 		   ,'2')
 GO
-INSERT INTO [curated].[DataQualityRules]
+INSERT INTO [dataquality].[DataQualityRules]
            ([RuleName]
            ,[RuleType]
            ,[RuleDefinition]
