@@ -5,15 +5,11 @@ GO
 DROP TABLE IF EXISTS [curated].[MDM_AssetAttr] 
 GO
 CREATE TABLE [curated].[MDM_AssetAttr](
-	[AssetAttrHash] [nvarchar](32) NOT NULL,
+	[AssetAttrHashKey] [nvarchar](32) NOT NULL,
 	[AssetAttrChkSum] [nvarchar](32) NOT NULL,
-	[StagingLoadTimestamp] [datetime2](7) NOT NULL,
-	[StagingSourceSystem] [nvarchar](50) NOT NULL,
-	[RawLoadTimestamp] [datetime2](7) NOT NULL,
-	[EffectiveStartDate] [date] NULL,
-	[EffectiveEndDate] [date] NULL,
-	[CuratedLoadTimestamp] [datetime2](7) NOT NULL,
-	[CuratedTransformedBy] [nvarchar](200) NOT NULL,
+	[LoadDate] [datetime2](7) NOT NULL,
+	[SourceSystem] [nvarchar](50) NOT NULL,
+	[LastSeenDate] [datetime2](7) NOT NULL,
 	[Asset_ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
 	[AttrCode] [nvarchar](50) NOT NULL,
@@ -24,6 +20,7 @@ SET ANSI_PADDING ON
 GO
 ALTER TABLE [curated].[MDM_AssetAttr] ADD  CONSTRAINT [PK_MDM_AssetAttr] PRIMARY KEY NONCLUSTERED 
 (
-	[AssetAttrHash] ASC
+	[Asset_Num] ASC,
+    [AttrCode] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO

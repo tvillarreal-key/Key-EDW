@@ -5,15 +5,11 @@ GO
 DROP TABLE IF EXISTS [curated].[MDM_Assets] 
 GO
 CREATE TABLE [curated].[MDM_Assets](
-	[AssetsHash] [nvarchar](32) NOT NULL,
+	[AssetsHashKey] [nvarchar](32) NOT NULL,
 	[AssetsChkSum] [nvarchar](32) NOT NULL,
-	[StagingLoadTimestamp] [datetime2](7) NOT NULL,
-	[StagingSourceSystem] [nvarchar](50) NOT NULL,
-	[RawLoadTimestamp] [datetime2](7) NOT NULL,
-	[EffectiveStartDate] [date] NULL,
-	[EffectiveEndDate] [date] NULL,
-	[CuratedLoadTimestamp] [datetime2](7) NOT NULL,
-	[CuratedTransformedBy] [nvarchar](200) NOT NULL,
+	[LoadDate] [datetime2](7) NOT NULL,
+	[SourceSystem] [nvarchar](50) NOT NULL,
+	[LastSeenDate] [datetime2](7) NOT NULL,
 	[ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
 	[Asset_Desc] [nvarchar](255) NULL,
@@ -65,13 +61,10 @@ CREATE TABLE [curated].[MDM_Assets](
 	[UsedByRigYard] [nvarchar](20) NULL,
 	[UsedByRigNum] [nvarchar](20) NULL,
 	[Source_LastUpdateDate] [datetime2](7) NULL,
-	[Source_LastUpdateBy] [nvarchar](128) NULL
-) ON [PRIMARY]
-GO
-SET ANSI_PADDING ON
-GO
-ALTER TABLE [curated].[MDM_Assets] ADD  CONSTRAINT [PK_MDM_Assets] PRIMARY KEY NONCLUSTERED 
+	[Source_LastUpdateBy] [nvarchar](128) NULL,
+CONSTRAINT [PK_MDM_AssetNum] PRIMARY KEY NONCLUSTERED 
 (
-	[AssetsHash] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[Asset_Num] ASC
+) ON [PRIMARY],
+) ON [PRIMARY]
 GO
