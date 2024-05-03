@@ -20,11 +20,9 @@ SELECT [LogSequence]
       ,[ExecutionRunDurationInSecs]
       ,[ErrorCode]
       ,[ErrorName]
+      ,[ErrorDescription]
       ,[ErrorSeverity]
       ,[ErrorCategory]
   FROM [metricsvault].[Integration_AuditLog]
-  WHERE LogSequence > 255
-  --AND [ExecutionRunID] = '606d2a9e-3009-4847-be0b-c82bd58c2885' 
-  order by 1
-  ;
-
+  WHERE LogSequence > 327
+  ORDER BY 1 DESC
