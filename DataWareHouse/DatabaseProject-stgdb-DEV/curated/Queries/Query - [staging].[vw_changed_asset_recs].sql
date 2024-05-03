@@ -55,10 +55,10 @@ SELECT TOP (1000) [AssetsHashKey]
       ,[UsedByRigNum]
       ,[Source_LastUpdateDate]
       ,[Source_LastUpdateBy]
-  FROM [curated].[vw_changed_asset_recs]
+  FROM [staging].[vw_changed_asset_recs]
 
 SELECT Asset_Desc, LEN(Asset_Desc) Length1, COUNT(*) CNT 
-FROM [curated].[vw_changed_asset_recs]
+FROM [staging].[vw_changed_asset_recs]
 GROUP BY Asset_Desc, LEN(Asset_Desc) 
 ORDER BY 2 ASC
 ;
