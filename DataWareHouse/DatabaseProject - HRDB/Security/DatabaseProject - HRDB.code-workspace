@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "mdmdb_DB_Project",
+			"path": "../../mdmdb_DB_Project"
+		},
+		{
+			"name": "DatabaseProject-dwhdb-DEV",
+			"path": "../../DatabaseProject-dwhdb-DEV"
+		},
+		{
+			"name": "DatabaseProject-stgdb-DEV",
+			"path": "../../DatabaseProject-stgdb-DEV"
+		}
+	]
+}
