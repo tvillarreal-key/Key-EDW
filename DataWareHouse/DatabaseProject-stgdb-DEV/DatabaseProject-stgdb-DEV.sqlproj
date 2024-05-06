@@ -8,6 +8,7 @@
     <ModelCollation>1033, CI</ModelCollation>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="dataquality\Action Queries" />
     <Folder Include="invalidated" />
     <Folder Include="invalidated\Tables" />
   </ItemGroup>
