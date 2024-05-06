@@ -1,8 +1,9 @@
 SELECT [LogSequence]
-      ,[PipelineName]
+      ,[TargetSchema]
       ,[TargetName]
-      ,[RowsRead]
-      ,[RowsWritten]
+      ,[ExecutionEndTime]
+      ,FORMAT(CAST(RowsRead AS money), 'N0') AS RowsRead
+      ,FORMAT(CAST(RowsWritten AS money), 'N0') AS RowsWritten
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
