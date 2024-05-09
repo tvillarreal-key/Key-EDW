@@ -1,3 +1,5 @@
+---- dwhdb-DEV --------------------------------------------
+-- Full Run
 SELECT [LogSequence]
       ,[TargetSchema]
       ,[TargetName]
@@ -7,12 +9,13 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-6
+        SELECT MAX(LogSequence)-8
         FROM [metricsvault].[Integration_AuditLog]        
     )
-    ORDER BY 3, 2 ASC
+    ORDER BY 1 DESC
     ;
 
+---- stgdb-DEV --------------------------------------------
 -- MDM_Assets
 SELECT 'staging data MDM_Assets cnts: ' cnt_type
       ,FORMAT(CAST(COUNT(*) AS money), 'N0') AS cnt
@@ -31,6 +34,8 @@ SELECT 'curated data MDM_Assets cnts: ' cnt_type
       ,FORMAT(CAST(COUNT(*) AS money), 'N0') AS cnt
 FROM [curated].[MDM_Assets] B
 ;
+
+---- stgdb-DEV --------------------------------------------
 -- MDM_AssetAttr
 SELECT 'staging data MDM_AssetAttr cnts: ' cnt_type
       ,FORMAT(CAST(COUNT(*) AS money), 'N0') AS cnt
