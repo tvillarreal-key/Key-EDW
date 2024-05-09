@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "restore": {
+    "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\DatabaseProject-ElasticMasterDB.sqlproj": {}
+  },
+  "projects": {
+    "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\DatabaseProject-ElasticMasterDB.sqlproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\DatabaseProject-ElasticMasterDB.sqlproj",
+        "projectName": "DatabaseProject-ElasticMasterDB",
+        "projectPath": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\DatabaseProject-ElasticMasterDB.sqlproj",
+        "packagesPath": "C:\\Users\\tvillarreal\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\tvillarreal\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net46"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net46": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5128"
+          ]
+        }
+      },
+      "frameworks": {
+        "net46": {
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}

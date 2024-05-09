@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZithZyzkxVC5NyMtO0XeVK6e45h2NPFI/R132pWps7WkGWZEW3FKcJVhnGrlT9LuMi71M4eF4EHhYjvbIKwPLg==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-ElasticMasterDB\\DatabaseProject-ElasticMasterDB.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
