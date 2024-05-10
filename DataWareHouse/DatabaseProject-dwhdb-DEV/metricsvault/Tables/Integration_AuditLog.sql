@@ -1,3 +1,9 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP TABLE IF EXISTS [metricsvault].[Integration_AuditLog] 
+GO
 CREATE TABLE [metricsvault].[Integration_AuditLog] (
     [LogSequence]                BIGINT         NULL,
     [Integration_MethodName]     NVARCHAR (100) NULL,
@@ -14,6 +20,8 @@ CREATE TABLE [metricsvault].[Integration_AuditLog] (
     [TargetName]                 NVARCHAR (100) NULL,
     [RowsRead]                   INT            NULL,
     [RowsWritten]                INT            NULL,
+    [RowsInserted]               INT            NULL,
+    [RowsUpdated]                INT            NULL,
     [ExecutionRunId]             NVARCHAR (100) NULL,
     [ExecutionStatus]            NVARCHAR (50)  NULL,
     [ExecutionStartTime]         DATETIME       NULL,
