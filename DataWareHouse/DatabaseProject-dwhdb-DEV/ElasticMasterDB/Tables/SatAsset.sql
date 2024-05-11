@@ -1,12 +1,18 @@
-USE ElasticMasterDB;
-DROP EXTERNAL TABLE [datavault].[SatAsset];
-CREATE EXTERNAL TABLE [datavault].[SatAsset]
-( 
-	[AssetsHashKey] [nvarchar](32) NOT NULL,
-	[LoadDate] [datetime2](7) NOT NULL,
-	[SourceSystem] [nvarchar](50) NOT NULL,
-	[AssetsChkSum] [nvarchar](32) NOT NULL,
-	[LastSeenDate] [datetime2](7) NOT NULL,
+--USE ElasticMasterDB;
+DROP EXTERNAL TABLE [datavault].[SatAsset] 
+GO
+CREATE EXTERNAL TABLE [datavault].[SatAsset](
+-- Key Area
+    [AssetsHashKey] [nvarchar](32) NOT NULL, -- Parent Hash Key (Associated Hub / Link Hash Key)
+    [LoadDate] [datetime2](7) NOT NULL,      -- Required (Satellite Load Date)
+-- Change Info Area
+    [LoadEndDate] [datetime2](7) NOT NULL,   -- Required (Load Date Of Next Satellite Record)
+    [SourceSystem] [nvarchar](50) NOT NULL,  -- Required (Name of Satellite Source)
+    [AssetsChkSum] [nvarchar](32) NOT NULL,  -- Optional (CheckSum) HashDiff
+    [ExtractDate] [datetime2](7) NOT NULL,   -- Optional (Source Load Date)
+-- Descriptive Attributes (very slow frequency) 
+	[Asset_Num] [nvarchar](60) NOT NULL,
+	[ID] [int] NOT NULL,
 	[Asset_Desc] [nvarchar](255) NULL,
 	[Asset_Class] [nvarchar](255) NULL,
 	[Manufacturer] [nvarchar](255) NULL,
