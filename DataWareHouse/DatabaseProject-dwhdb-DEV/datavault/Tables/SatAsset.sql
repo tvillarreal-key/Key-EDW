@@ -8,9 +8,9 @@ CREATE TABLE [datavault].[SatAsset](
 -- Key Area
     [AssetsHashKey] [nvarchar](32) NOT NULL, -- Parent Hash Key (Associated Hub / Link Hash Key)
     [LoadDate] [datetime2](7) NOT NULL,      -- Required (Satellite Load Date)
--- Change Info Area
-    [LoadEndDate] [datetime2](7) NOT NULL,   -- Required (Load Date Of Next Satellite Record)
     [SourceSystem] [nvarchar](50) NOT NULL,  -- Required (Name of Satellite Source)
+-- Change Info Area
+    [LoadEndDate] [datetime2](7) NULL,       -- Required (Load Date Of Next Satellite Record)
     [AssetsChkSum] [nvarchar](32) NOT NULL,  -- Optional (CheckSum) HashDiff
     [ExtractDate] [datetime2](7) NOT NULL,   -- Optional (Source Load Date)
 -- Descriptive Attributes (very slow frequency) 
