@@ -1,5 +1,9 @@
 --USE ElasticMasterDB;
-DROP EXTERNAL TABLE [datavault].[SatAsset] 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP TABLE IF EXISTS [datavault].[SatAsset] 
 GO
 CREATE EXTERNAL TABLE [datavault].[SatAssetAttr](
 -- Key Area

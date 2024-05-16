@@ -1,7 +1,10 @@
-USE ElasticMasterDB;
-DROP SCHEMA [datavault];
-CREATE SCHEMA [datavault];
-DROP EXTERNAL TABLE [staging].[MDM_Assets];
+--USE ElasticMasterDB;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP TABLE IF EXISTS [staging].[MDM_Assets] 
+GO
 CREATE EXTERNAL TABLE [staging].[MDM_Assets]
 ( 
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
