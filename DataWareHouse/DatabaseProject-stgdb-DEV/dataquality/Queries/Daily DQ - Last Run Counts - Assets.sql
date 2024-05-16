@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-10
+        SELECT MAX(LogSequence)-16
         FROM [metricsvault].[Integration_AuditLog]        
     )
     ORDER BY 1 DESC
@@ -64,6 +64,11 @@ FROM [datavault].[HubAsset]
 GROUP BY LoadDate,LastSeenDate
 ORDER BY 1;
 
+SELECT LoadDate,LastSeenDate, COUNT(*) cnt 
+FROM [datavault].[HubAssetAttr] 
+GROUP BY LoadDate,LastSeenDate
+ORDER BY 1;
+
 -- validate query for update below
 SELECT 
     hub.AssetsHashKey, hub.LoadDate, hub.SourceSystem, hub.Asset_Num,
@@ -73,3 +78,4 @@ FROM
 WHERE 
     hub.LastSeenDate < getdate()
 ;
+
