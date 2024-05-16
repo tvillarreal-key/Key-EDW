@@ -9,7 +9,7 @@ SELECT DISTINCT
     stg.[AssetsHashKey]
     ,GETDATE() AS SatLoadDate
     ,stg.[SourceSystem]
-    ,'' AS LoadEndDate
+    ,CAST(NULL AS DATETIME) AS LoadEndDate
     ,stg.[AssetsChkSum]
     ,stg.[LoadDate] AS StgExtractDate
     ,stg.[LastSeenDate]

@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-8
+        SELECT MAX(LogSequence)-10
         FROM [metricsvault].[Integration_AuditLog]        
     )
     ORDER BY 1 DESC
@@ -53,4 +53,23 @@ UNION
 SELECT 'curated data MDM_AssetAttr cnts: ' cnt_type
       ,FORMAT(CAST(COUNT(*) AS money), 'N0') AS cnt
 FROM [curated].[MDM_AssetAttr] B
+;
+
+---- dwhdb-DEV --------------------------------------------
+-- datavault checks
+-- ** Last Seen Counts
+-- LoadDate - when hub record added (no updates); LastSeenDate - Asset_Num last Seen in latest stg LoadDate
+SELECT LoadDate,LastSeenDate, COUNT(*) cnt 
+FROM [datavault].[HubAsset] 
+GROUP BY LoadDate,LastSeenDate
+ORDER BY 1;
+
+-- validate query for update below
+SELECT 
+    hub.AssetsHashKey, hub.LoadDate, hub.SourceSystem, hub.Asset_Num,
+    hub.LastSeenDate
+FROM 
+    [datavault].[HubAsset] hub
+WHERE 
+    hub.LastSeenDate < getdate()
 ;
