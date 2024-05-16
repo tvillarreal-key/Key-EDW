@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS [datavault].[SatAssetAttr]
 GO
 CREATE TABLE [datavault].[SatAssetAttr](
 -- Key Area
-    [AssetsHashKey] [nvarchar](32) NOT NULL, -- Parent Hash Key (Associated Hub / Link Hash Key)
+    [AssetAttrHashKey] [nvarchar](32) NOT NULL, -- Parent Hash Key (Associated Hub / Link Hash Key)
     [LoadDate] [datetime2](7) NOT NULL,      -- Required (Satellite Load Date)
     [SourceSystem] [nvarchar](50) NOT NULL,  -- Required (Name of Satellite Source)
 -- Change Info Area
@@ -24,7 +24,7 @@ SET ANSI_PADDING ON
 GO
 ALTER TABLE [datavault].[SatAssetAttr] ADD  CONSTRAINT [PK_SatAssetAttr] PRIMARY KEY NONCLUSTERED 
 (
-	[AssetsHashKey] ASC
+	[AssetAttrHashKey] ASC
     ,[LoadDate] ASC
     ,[SourceSystem] ASC
 
