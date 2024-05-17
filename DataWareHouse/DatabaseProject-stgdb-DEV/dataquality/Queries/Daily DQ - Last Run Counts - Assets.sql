@@ -84,3 +84,13 @@ SELECT LoadDate,LastSeenDate, COUNT(*) cnt
 FROM [datavault].[HubAssetAttr] 
 GROUP BY LoadDate,LastSeenDate
 ORDER BY 1;
+
+SELECT LoadDate,LoadEndDate, COUNT(*) cnt 
+FROM [datavault].[SatAsset] 
+GROUP BY LoadDate,LoadEndDate
+ORDER BY 1;
+
+SELECT LoadDate,LoadEndDate, COUNT(*) cnt 
+FROM [datavault].[SatAssetAttr] 
+GROUP BY LoadDate,LoadEndDate
+ORDER BY 1;
