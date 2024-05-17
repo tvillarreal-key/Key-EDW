@@ -13,14 +13,14 @@ FROM [staging].MDM_Assets;
 
 
 -- update used in pipeline
-UPDATE [datavault].HubAsset 
+--UPDATE [datavault].HubAsset 
 SET LastSeenDate = '2024-05-11 12:58:00'
 FROM 
     [datavault].[HubAsset] hub
 WHERE
     hub.LastSeenDate < '2024-05-11 12:58:00'
 ;
-UPDATE [datavault].[HubAsset]
+--UPDATE [datavault].[HubAsset]
 SET LastSeenDate = '2024-05-15T10:12:12.901'
 
 SELECT AssetsHashKey, LoadDate,Asset_Num,LastSeenDate
