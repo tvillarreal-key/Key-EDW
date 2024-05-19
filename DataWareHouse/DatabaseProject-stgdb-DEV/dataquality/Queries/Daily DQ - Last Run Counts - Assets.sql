@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-9
+        SELECT MAX(LogSequence)-10
         FROM [metricsvault].[Integration_AuditLog]        
     )
     ORDER BY 1 DESC
