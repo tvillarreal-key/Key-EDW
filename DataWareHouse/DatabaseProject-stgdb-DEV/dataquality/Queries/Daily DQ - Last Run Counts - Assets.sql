@@ -12,6 +12,7 @@ SELECT [LogSequence]
         SELECT MAX(LogSequence)-10
         FROM [metricsvault].[Integration_AuditLog]        
     )
+--    AND TargetSchema = 'RAW'
     ORDER BY 1 DESC
     ;
 
