@@ -1,0 +1,8 @@
+SET ANSI_PADDING ON
+GO
+DROP INDEX IF EXISTS [dbo].[IDX_NC_LaborIncremental2_Asset_Cust_Work]
+GO
+CREATE NONCLUSTERED INDEX [IDX_NC_LaborIncremental2_Asset_Cust_Work]
+ON [dbo].[LaborIncremental2] ([ASSET_NUMBER],[CUSTOMER_ID],[WORK_DATE])
+INCLUDE ([EMPLOYEE_ID],[DURATION])
+GO

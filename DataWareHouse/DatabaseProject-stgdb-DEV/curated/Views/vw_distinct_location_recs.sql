@@ -28,7 +28,7 @@ SELECT DISTINCT
     )) As LocationChkSum    
     ,getdate() As LoadDate
     ,SourceSystem
-    ,ISNULL(CONVERT(DATETIME, NULL), NULL) AS LastSeenDate
+    ,NULL As LoadSeenDate
     ,COALESCE(Yard_Code,'N/A') AS Yard_Code
     ,COALESCE(Yard_Name,'N/A') AS Yard_Name
     ,COALESCE(Loco_Code,'N/A') AS Loco_Code
