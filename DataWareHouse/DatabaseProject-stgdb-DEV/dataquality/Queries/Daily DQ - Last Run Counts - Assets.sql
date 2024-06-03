@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-10
+        SELECT MAX(LogSequence)-14
         FROM [metricsvault].[Integration_AuditLog]        
     )
 --    AND TargetSchema = 'RAW'

@@ -7,15 +7,15 @@ GO
 CREATE TABLE [curated].[dimLOB](
 	[LOBHashKey] [nvarchar](32) NOT NULL,
 	[LOBChkSum] [nvarchar](32) NOT NULL,
-	[LoadDate] [datetime2](7) NOT NULL,
+	[LOB_Key_Code] [nvarchar](500) NOT NULL,
 	[SourceSystem] [nvarchar](50) NOT NULL,
-	[LastSeenDate] [datetime2](7) NULL,
     [Yard_Code] [nvarchar](20) NULL,
     [Yard_Name] [nvarchar](100) NULL, 
     [Lvl1_Code] [nvarchar](20) NULL,
     [Lvl1_Name] [nvarchar](100) NULL,
     [Lob_Code] [nvarchar](20) NULL,
-    [Lob_Name] [nvarchar](100) NULL,     
+    [Lob_Name] [nvarchar](100) NULL,    
+	[LoadDate] [datetime2](7) NOT NULL
 ) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
