@@ -12,7 +12,7 @@ SELECT [LogSequence]
         SELECT MAX(LogSequence)-14
         FROM [metricsvault].[Integration_AuditLog]        
     )
---    AND TargetSchema = 'RAW'
+  --  AND TargetSchema = 'DATAMART'
     ORDER BY 1 DESC
     ;
 
