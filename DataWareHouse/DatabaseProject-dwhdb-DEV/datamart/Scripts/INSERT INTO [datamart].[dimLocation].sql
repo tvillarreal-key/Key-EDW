@@ -16,13 +16,13 @@ VALUES
      REPLICATE('0',32)
      ,'?'
      ,'?'
-     ,'?'
      ,'Unknown'
-     ,'?'
      ,'Unknown'
-     ,'?'
      ,'Unknown'
-     ,'?'
+     ,'Unknown'
+     ,'Unknown'
+     ,'Unknown'
+     ,'Unknown'
      ,'Unknown'
      ,getdate()
     );

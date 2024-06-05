@@ -4,9 +4,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 DROP TABLE IF EXISTS [datamart].[dimAssets] 
 GO
-CREATE TABLE [datamart].[Assets](
+CREATE TABLE [datamart].[dimAssets](
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
-	[LoadDate] [datetime2](7) NOT NULL,
 	[ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
 	[Asset_Desc] [nvarchar](255) NULL,
@@ -36,7 +35,8 @@ CREATE TABLE [datamart].[Assets](
 	[Size] [nvarchar](50) NULL,
 	[UsedByRigYard] [nvarchar](20) NULL,
 	[UsedByRigNum] [nvarchar](20) NULL,
-CONSTRAINT [PK_MDM_AssetNum] PRIMARY KEY NONCLUSTERED 
+	[LoadDate] [datetime2](7) NOT NULL,
+CONSTRAINT [PK_dimAssets] PRIMARY KEY NONCLUSTERED 
 (
 	[Asset_Num] ASC
 ) ON [PRIMARY],
