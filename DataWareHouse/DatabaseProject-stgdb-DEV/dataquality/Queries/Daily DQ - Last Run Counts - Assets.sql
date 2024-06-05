@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-14
+        SELECT MAX(LogSequence)-17
         FROM [metricsvault].[Integration_AuditLog]        
     )
   --  AND TargetSchema = 'DATAMART'
