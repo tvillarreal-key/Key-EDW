@@ -8,7 +8,7 @@ CREATE TABLE [datamart].[dimAssets](
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
 	[ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
-	[Asset_Desc] [nvarchar](255) NULL,
+	[Asset_Desc] [nvarchar](255) NOT NULL,
 	[Manufacturer] [nvarchar](255) NULL,
 	[Model] [nvarchar](255) NULL,
 	[Model_Year] [nvarchar](255) NULL,
@@ -39,6 +39,7 @@ CREATE TABLE [datamart].[dimAssets](
 CONSTRAINT [PK_dimAssets] PRIMARY KEY NONCLUSTERED 
 (
 	[Asset_Num] ASC
+	,[Asset_Desc] ASC
 ) ON [PRIMARY],
 ) ON [PRIMARY]
 GO
