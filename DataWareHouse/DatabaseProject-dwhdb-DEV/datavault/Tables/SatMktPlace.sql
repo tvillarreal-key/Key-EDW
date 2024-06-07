@@ -14,7 +14,7 @@ CREATE TABLE [datavault].[SatMktPlace](
     [MktPlaceChkSum] [nvarchar](32) NOT NULL,  -- Optional (CheckSum) HashDiff
     [ExtractDate] [datetime2](7) NOT NULL,     -- Optional (Source Load Date)
 -- Descriptive Attributes (very slow frequency) 
-    [MktPlace_Code] [nvarchar](100) NOT NULL,
+    [MktPlace_Code] [nvarchar](20) NOT NULL,
 	[MKTP_Name] [nvarchar](100) NOT NULL,
 ) ON [PRIMARY]
 GO

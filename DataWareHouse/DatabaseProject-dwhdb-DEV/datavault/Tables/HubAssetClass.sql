@@ -17,6 +17,8 @@ CONSTRAINT [PK_HubAssetClass] PRIMARY KEY NONCLUSTERED
 CONSTRAINT [UK_HubAssetClass] UNIQUE NONCLUSTERED 
 (
     [AssetClass_Code] ASC
+    ,[LoadDate] ASC
+    ,[SourceSystem] ASC	
 ) ON [PRIMARY],
 ) ON [PRIMARY]
 GO

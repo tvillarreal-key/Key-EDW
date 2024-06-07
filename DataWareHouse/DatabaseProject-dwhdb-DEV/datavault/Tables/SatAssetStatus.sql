@@ -14,7 +14,6 @@ CREATE TABLE [datavault].[SatAssetStatus](
     [AssetStatusChkSum] [nvarchar](32) NOT NULL,       -- Optional (CheckSum) HashDiff
     [ExtractDate] [datetime2](7) NOT NULL,            -- Optional (Source Load Date)
 -- Descriptive Attributes (very slow frequency) 
-    [SatAssetStatus_Code] [nvarchar](100) NOT NULL,
     [AssetStatus_Code] [nvarchar](20) NOT NULL,
 	[AssetStatus_Name] [nvarchar](100) NULL,
 ) ON [PRIMARY]

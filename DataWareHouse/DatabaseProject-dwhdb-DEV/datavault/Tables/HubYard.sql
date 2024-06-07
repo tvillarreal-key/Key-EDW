@@ -8,7 +8,7 @@ CREATE TABLE [datavault].[HubYard](
 	[YardHashKey] [nvarchar](32) NOT NULL,
 	[LoadDate] [datetime2](7) NOT NULL,
 	[SourceSystem] [nvarchar](50) NOT NULL,
-    [Yard_Code] [nvarchar](100) NOT NULL,
+    [Yard_Code] [nvarchar](20) NOT NULL,
 	[LastSeenDate] [datetime2](7) NOT NULL,
 CONSTRAINT [PK_HubYard] PRIMARY KEY NONCLUSTERED 
 (

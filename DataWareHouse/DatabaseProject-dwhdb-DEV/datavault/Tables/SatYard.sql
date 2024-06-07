@@ -14,7 +14,7 @@ CREATE TABLE [datavault].[SatYard](
     [YardChkSum] [nvarchar](32) NOT NULL,  -- Optional (CheckSum) HashDiff
     [ExtractDate] [datetime2](7) NOT NULL,     -- Optional (Source Load Date)
 -- Descriptive Attributes (very slow frequency) 
-    [Yard_Code] [nvarchar](100) NOT NULL,
+    [Yard_Code] [nvarchar](20) NOT NULL,
 	[Yard_Name] [nvarchar](100) NOT NULL,
 ) ON [PRIMARY]
 GO

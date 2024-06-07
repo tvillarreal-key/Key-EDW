@@ -2,21 +2,23 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [datavault].[HubLocation] 
+DROP TABLE IF EXISTS [datavault].[HubMktPlace] 
 GO
-CREATE TABLE [datavault].[HubLocation](
-	[LocationHashKey] [nvarchar](32) NOT NULL,
+CREATE TABLE [datavault].[HubMktPlace](
+	[MktPlaceHashKey] [nvarchar](32) NOT NULL,
 	[LoadDate] [datetime2](7) NOT NULL,
 	[SourceSystem] [nvarchar](50) NOT NULL,
-    [Location_Code] [nvarchar](100) NOT NULL,
+    [MktPlace_Code] [nvarchar](20) NOT NULL,
 	[LastSeenDate] [datetime2](7) NOT NULL,
-CONSTRAINT [PK_HubLocation] PRIMARY KEY NONCLUSTERED 
+CONSTRAINT [PK_HubMktPlace] PRIMARY KEY NONCLUSTERED 
 (
-	[LocationHashKey] ASC
+	[MktPlaceHashKey] ASC
 ) ON [PRIMARY],
-CONSTRAINT [UK_HubLocation] UNIQUE NONCLUSTERED 
+CONSTRAINT [UK_HubMktPlace] UNIQUE NONCLUSTERED 
 (
-	[Location_Code] ASC
+	[MktPlace_Code] ASC
+    ,[LoadDate] ASC
+    ,[SourceSystem] ASC		
 ) ON [PRIMARY],
 ) ON [PRIMARY]
 GO

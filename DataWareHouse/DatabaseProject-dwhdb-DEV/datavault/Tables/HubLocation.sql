@@ -17,6 +17,8 @@ CONSTRAINT [PK_HubLocation] PRIMARY KEY NONCLUSTERED
 CONSTRAINT [UK_HubLocation] UNIQUE NONCLUSTERED 
 (
 	[Location_Code] ASC
+    ,[LoadDate] ASC
+    ,[SourceSystem] ASC		
 ) ON [PRIMARY],
 ) ON [PRIMARY]
 GO
