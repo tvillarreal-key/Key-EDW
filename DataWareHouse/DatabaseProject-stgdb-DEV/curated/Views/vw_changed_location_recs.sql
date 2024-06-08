@@ -2,7 +2,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP VIEW [curated].[vw_changed_location_recs]
+DROP VIEW IF EXISTS [curated].[vw_changed_location_recs]
 GO
 CREATE VIEW [curated].[vw_changed_location_recs] AS
 SELECT A.*,'I' AS Chg_Flag
