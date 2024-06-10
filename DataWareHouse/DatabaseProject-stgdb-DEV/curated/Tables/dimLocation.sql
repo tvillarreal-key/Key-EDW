@@ -7,9 +7,10 @@ GO
 CREATE TABLE [curated].[dimLocation](
 	[LocationHashKey] [nvarchar](32) NOT NULL,
 	[LocationChkSum] [nvarchar](32) NOT NULL,
-	[Loca_Code] [nvarchar](20) NULL,
+	[Loca_Code] [nvarchar](20) NOT NULL,
 	[SourceSystem] [nvarchar](50) NOT NULL,
-	[Loca_Name] [nvarchar](100) NULL,
+	[Loca_Name] [nvarchar](100) NOT NULL,
+	[LastSeenDate] [datetime2](7) NULL,	
 	[LoadDate] [datetime2](7) NOT NULL
 ) ON [PRIMARY]
 GO

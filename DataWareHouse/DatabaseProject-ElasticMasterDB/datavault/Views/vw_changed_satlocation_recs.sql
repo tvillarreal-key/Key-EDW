@@ -11,14 +11,8 @@ SELECT DISTINCT
     ,cur.[LocationChkSum]
     ,cur.[LoadDate] AS curExtractDate
     ,cur.[LastSeenDate]
-    ,cur.[Yard_Code]
-    ,cur.[Yard_Name]
-    ,cur.[Loco_Code]
-    ,cur.[Loco_Name]
     ,cur.[Loca_Code]
     ,cur.[Loca_Name]
-    ,cur.[MKTP_Code]
-    ,cur.[MKTP_Name]
 ,'I' AS Chg_Flag
 FROM [curated].[dimLocation] cur 
 LEFT JOIN [datavault].[satLocation] sat
