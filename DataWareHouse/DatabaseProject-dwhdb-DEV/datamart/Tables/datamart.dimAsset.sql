@@ -2,12 +2,14 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [datamart].[dimAssets] 
+DROP TABLE IF EXISTS [curated].[dimAsset]
 GO
-CREATE TABLE [datamart].[dimAssets](
-	[AssetsHashKey] [nvarchar](32) NOT NULL,
-	[ID] [int] NOT NULL,
+CREATE TABLE [curated].[dimAsset](
+	[AssetHashKey] [nvarchar](32) NOT NULL,
+	[AssetChkSum] [nvarchar](32) NOT NULL,	
 	[Asset_Num] [nvarchar](60) NOT NULL,
+	[SourceSystem] [nvarchar](50) NOT NULL,	
+	[ID] [int] NOT NULL,
 	[Asset_Desc] [nvarchar](255) NOT NULL,
 	[Manufacturer] [nvarchar](255) NULL,
 	[Model] [nvarchar](255) NULL,
@@ -38,8 +40,7 @@ CREATE TABLE [datamart].[dimAssets](
 	[LoadDate] [datetime2](7) NOT NULL,
 CONSTRAINT [PK_dimAssets] PRIMARY KEY NONCLUSTERED 
 (
-	[Asset_Num] ASC
-	,[Asset_Desc] ASC
+	[AssetHashKey] ASC
 ) ON [PRIMARY],
 ) ON [PRIMARY]
 GO
