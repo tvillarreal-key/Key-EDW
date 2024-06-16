@@ -1,5 +1,5 @@
 INSERT INTO [datamart].[dimAssetStatus]
-    ([AssetStatusKey]
+    ([StatusHashKey]
     ,[Status_Code]
     ,[Status_Name]
     ,[LoadDate])
@@ -12,15 +12,15 @@ VALUES
     );
 
 SELECT
-       [AssetStatusKey]
+       [StatusHashKey]
       ,[Status_Code]
       ,[Status_Name]
       ,[LoadDate]
   FROM [datamart].[dimAssetStatus]
-  WHERE AssetStatusKey = '00000000000000000000000000000000'
+  WHERE StatusHashKey = '00000000000000000000000000000000'
   ;
 
 DELETE
   FROM [datamart].[dimAssetStatus]
-  WHERE AssetStatusKey = '00000000000000000000000000000000'
+  WHERE StatusHashKey = '00000000000000000000000000000000'
   ;

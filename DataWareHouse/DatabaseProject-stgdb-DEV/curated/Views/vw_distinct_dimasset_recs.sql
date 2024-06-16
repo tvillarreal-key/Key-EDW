@@ -2,9 +2,9 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP VIEW IF EXISTS [curated].[vw_distinct_Asset_recs]
+DROP VIEW IF EXISTS [curated].[vw_distinct_dimasset_recs]
 GO
-CREATE VIEW [curated].[vw_distinct_Asset_recs] AS
+CREATE VIEW [curated].[vw_distinct_dimasset_recs] AS
 SELECT DISTINCT
     UPPER(CONVERT(char(32), 
         HASHBYTES('MD5',
@@ -12,21 +12,22 @@ SELECT DISTINCT
                     RTRIM(LTRIM(COALESCE(Asset_Num,'N/A'))
             ))
         ),2
-    )) As AssetHashKey    
+    )) As AssetsHashKey    
     ,UPPER(CONVERT(char(32), 
         HASHBYTES('MD5',
             UPPER(
                     RTRIM(LTRIM(COALESCE(Asset_Desc,'N/A'))
             ))
         ),2
-    )) As AssetChkSum  
-    ,COALESCE(Asset_Num,'N/A') AS Asset_Code
+    )) As AssetsChkSum  
+    ,COALESCE(Asset_Num,'N/A') AS Asset_Num
     ,SourceSystem
-    ,COALESCE(Asset_Desc,'N/A') AS Asset_Name
+    ,COALESCE(Asset_Desc,'N/A') AS Asset_Desc
     ,COALESCE(ID,0) AS ID
     ,COALESCE(Manufacturer,'N/A') AS Manufacturer
     ,COALESCE(Model,'N/A') AS Model
     ,COALESCE(Model_Year,'N/A') AS Model_Year
+    ,COALESCE(Series,'N/A') AS Series
     ,COALESCE(Serial_Num,'N/A') AS Serial_Num
     ,COALESCE(Source,'N/A') AS Source
     ,COALESCE(Marketed,0) AS Marketed
@@ -37,6 +38,8 @@ SELECT DISTINCT
     ,COALESCE(Crew_Needed,0) AS Crew_Needed
     ,COALESCE(Avail_Date,'2999-12-31') AS Avail_Date
     ,COALESCE(LastWT_Date,'2999-12-31') AS LastWT_Date
+    ,COALESCE(Note,'N/A') AS Note
+    ,COALESCE(Customer,'N/A') AS Customer
     ,CASE 
         WHEN [JobType] = '' OR [JobType] IS NULL THEN 'N/A'
         ELSE [JobType]

@@ -5,13 +5,13 @@ GO
 DROP TABLE IF EXISTS [datamart].[dimAssetStatus] 
 GO
 CREATE TABLE [datamart].[dimAssetStatus](
-	[AssetStatusKey] [nvarchar](32) NOT NULL,
+	[StatusHashKey] [nvarchar](32) NOT NULL,
 	[Status_Code] [nvarchar](20) NULL,
 	[Status_Name] [nvarchar](255) NULL,
     [LoadDate] [datetime2](7) NOT NULL,               
 CONSTRAINT [PK_dimAssetStatus] PRIMARY KEY NONCLUSTERED 
 (
-	[AssetStatusKey] ASC
+	[StatusHashKey] ASC
 ) ON [PRIMARY],
 CONSTRAINT [UK_dimAssetStatus] UNIQUE NONCLUSTERED 
 (
