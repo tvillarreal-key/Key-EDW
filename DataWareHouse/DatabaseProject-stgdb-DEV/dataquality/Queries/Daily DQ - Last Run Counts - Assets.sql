@@ -9,7 +9,7 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-21
+        SELECT MAX(LogSequence)-26
         FROM [metricsvault].[Integration_AuditLog]        
     )
  --   AND TargetSchema = 'CURATED'
