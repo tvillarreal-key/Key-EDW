@@ -5,13 +5,14 @@ GO
 DROP TABLE IF EXISTS [datamart].[dimAssetClass] 
 GO
 CREATE TABLE [datamart].[dimAssetClass](
-	[ClassKey] [nvarchar](3) NOT NULL,
-	[Class_Code] [nvarchar](20) NULL,
+	[ClassHashKey] [nvarchar](32) NOT NULL,
+	[Class_Code] [nvarchar](20) NOT NULL,
+	[SourceSystem] [nvarchar](50) NOT NULL,
 	[Class_Name] [nvarchar](255) NULL,
-    [LoadDate] [datetime2](7) NOT NULL,               
+	[LoadDate] [datetime2](7) NOT NULL              
 CONSTRAINT [PK_dimAssetClass] PRIMARY KEY NONCLUSTERED 
 (
-	[ClassKey] ASC
+	[ClassHashKey] ASC
 ) ON [PRIMARY],
 CONSTRAINT [UK_dimAssetClass] UNIQUE NONCLUSTERED 
 (
