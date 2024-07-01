@@ -2,11 +2,11 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [curated].[dimAsset]
+DROP TABLE IF EXISTS [curated].[dimAsset] 
 GO
 CREATE TABLE [curated].[dimAsset](
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
-	[AssetsChkSum] [nvarchar](32) NOT NULL,	
+	[AssetsChkSum] [nvarchar](32) NOT NULL,
 	[ID] [int] NOT NULL,
 	[Asset_Num] [nvarchar](60) NOT NULL,
 	[Asset_Desc] [nvarchar](255) NOT NULL,
@@ -36,10 +36,15 @@ CREATE TABLE [curated].[dimAsset](
 	[Size] [nvarchar](50) NULL,
 	[UsedByRigYard] [nvarchar](20) NULL,
 	[UsedByRigNum] [nvarchar](20) NULL,
+	[Source_LastUpdateDate] [datetime2](7) NULL,
+	[Source_LastUpdateBy] [nvarchar](128) NULL,    
 	[LoadDate] [datetime2](7) NOT NULL
-CONSTRAINT [PK_dimAssets] PRIMARY KEY NONCLUSTERED 
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ALTER TABLE [curated].[dimAsset] ADD  CONSTRAINT [PK_dimAssets] PRIMARY KEY NONCLUSTERED 
 (
 	[AssetsHashKey] ASC
-) ON [PRIMARY],
-) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO

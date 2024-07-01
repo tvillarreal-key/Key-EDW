@@ -2,7 +2,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP VIEW IF EXISTS [curated].[vw_distinct_dimasset_recs]
+DROP VIEW IF EXISTS [curated].[vw_distinct_dimasset_recs] 
 GO
 CREATE VIEW [curated].[vw_distinct_dimasset_recs] AS
 SELECT DISTINCT
@@ -56,6 +56,8 @@ SELECT DISTINCT
      END AS [Size]
     ,COALESCE(UsedByRigYard,'N/A') AS UsedByRigYard
     ,COALESCE(UsedByRigNum,'N/A') AS UsedByRigNum
+    ,COALESCE(Source_LastUpdateDate,'2999-12-31') AS Source_LastUpdateDate
+    ,COALESCE(Source_LastUpdateBy,'N/A') AS Source_LastUpdateBy
     ,getdate() As LoadDate
 From staging.Mdm_Assets
 ;

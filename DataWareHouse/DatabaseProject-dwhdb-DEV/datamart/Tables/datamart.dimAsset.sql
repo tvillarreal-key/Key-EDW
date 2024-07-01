@@ -2,7 +2,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-DROP TABLE IF EXISTS [datamart].[dimAsset]
+DROP TABLE IF EXISTS [datamart].[dimAsset] 
 GO
 CREATE TABLE [datamart].[dimAsset](
 	[AssetsHashKey] [nvarchar](32) NOT NULL,
@@ -35,10 +35,15 @@ CREATE TABLE [datamart].[dimAsset](
 	[Size] [nvarchar](50) NULL,
 	[UsedByRigYard] [nvarchar](20) NULL,
 	[UsedByRigNum] [nvarchar](20) NULL,
+	[Source_LastUpdateDate] [datetime2](7) NULL,
+	[Source_LastUpdateBy] [nvarchar](128) NULL,        
 	[LoadDate] [datetime2](7) NOT NULL
-CONSTRAINT [PK_dimAsset] PRIMARY KEY NONCLUSTERED 
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+ALTER TABLE [datamart].[dimAsset] ADD  CONSTRAINT [PK_dimAsset] PRIMARY KEY NONCLUSTERED 
 (
 	[AssetsHashKey] ASC
-) ON [PRIMARY],
-) ON [PRIMARY]
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
