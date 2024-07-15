@@ -9,12 +9,12 @@ SELECT [LogSequence]
   FROM [metricsvault].[Integration_AuditLog]
   WHERE LogSequence > 
     (
-        SELECT MAX(LogSequence)-26
+        SELECT MAX(LogSequence)-27
         FROM [metricsvault].[Integration_AuditLog]        
     )
  --   AND TargetSchema = 'CURATED'
  --  AND TargetSchema IN ('DATAMART')
-    ORDER BY 1 DESC
+    ORDER BY 4 DESC
     ;
 
 ---- stgdb-DEV --------------------------------------------
