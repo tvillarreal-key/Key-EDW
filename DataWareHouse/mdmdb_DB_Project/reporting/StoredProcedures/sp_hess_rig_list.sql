@@ -1,0 +1,66 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP PROCEDURE IF EXISTS [reporting].[sp_hess_rig_list]
+GO
+CREATE PROCEDURE [reporting].[sp_hess_rig_list]
+AS
+BEGIN 
+/* -------------------------------------------------- UPDATE THE ASSETS TABLE ---------------------------------------------------- */
+    TRUNCATE TABLE reporting.Hess_Rig_List_Hist;
+/* CREATE A VIEW SHOWING HESS RIG AND RIG TYPE BY DATE STARTING 01-01-2024 */
+    WITH LISTDATES(ALLDATES) AS (
+        /* CREATE LIST OF CALENDAR DATES TO BACKFILL TO BEGINNING OF 2024*/
+        SELECT 
+            CONVERT(DATE,'2024-01-01') AS OPDATE 
+        UNION ALL 
+        SELECT  
+            DATEADD(D, 1, ALLDATES)
+        FROM LISTDATES 
+        WHERE ALLDATES < CONVERT(DATE, '2024-07-20')
+    )
+
+    , HESS_RIGS AS (
+        /* GET HESS RIGS ONLY FROM THE RIGCOUNTSTAGE TABLE */
+        SELECT 
+            ASSETNUM AS RIG, 
+            Daylight24HR AS RIGTYPE,
+            DATE AS OPDATE
+        FROM DBO.RigCountStage C 
+        WHERE ASSETNUM IS NOT NULL AND ASSETNUM <> '' AND ASSETTYPE = 'RIG' AND Daylight24HR <> '' AND CLIENT LIKE '%HESS%'
+    )
+
+    , MINDATE AS (
+        /* FIND THE FIRST DATE THAT A RIG TYPE WAS RECORDED IN THE RIGCOUNTSTAGE TABLE */
+        SELECT 
+            RIG, 
+            RIGTYPE,
+            MIN(OPDATE) AS MINDATE 
+        FROM HESS_RIGS
+        GROUP BY RIG, RIGTYPE
+    )
+
+    , BACKFILL_DATES AS (
+        /* BACKFILL THE DATES FROM 01-01-2024 TO THE FIRST TIME THE RIGCOUNTSTAGE TABLE SHOWS A RIG */
+        SELECT 
+            M.RIG,
+            CASE 
+                WHEN M.RIG = '0086063' AND L.ALLDATES >= '2024-01-01' AND L.ALLDATES < '2024-06-14' THEN '24 Hour' 
+                WHEN M.RIG = '0086063' AND L.ALLDATES >= '2024-06-14' THEN 'Daylight' 
+                ELSE M.RIGTYPE END AS RIGTYPE,
+            L.ALLDATES AS OPDATE
+        FROM LISTDATES L 
+        CROSS JOIN MINDATE M 
+        WHERE L.ALLDATES < M.MINDATE
+    )
+
+    INSERT INTO reporting.Hess_Rig_List_Hist    
+        (RIG, RIGTYPE, OPDATE)
+        SELECT * FROM BACKFILL_DATES -- BACKFILL DATES
+        UNION 
+        SELECT * FROM HESS_RIGS -- EXISTING DATES
+        OPTION (MAXRECURSION 10000);
+END
+
+GO
