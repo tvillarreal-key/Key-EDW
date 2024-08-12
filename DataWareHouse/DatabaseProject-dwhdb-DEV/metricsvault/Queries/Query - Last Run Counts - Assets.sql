@@ -1,12 +1,21 @@
+---- dwhdb-PROD --------------------------------------------
+-- Full Run
+---- dwhdb-DEV --------------------------------------------
+-- Full Run
 SELECT [LogSequence]
-      ,[PipelineName]
+      ,[TargetSchema]
       ,[TargetName]
-      ,[RowsRead]
-      ,[RowsWritten]
+      ,[ExecutionEndTime]
+      ,FORMAT(CAST(RowsRead AS money), 'N0') AS RowsRead
+      ,FORMAT(CAST(RowsWritten AS money), 'N0') AS RowsWritten
   FROM [metricsvault].[Integration_AuditLog]
-  WHERE LogSequence > 
+  WHERE CONVERT(DATE,ExecutionStartTime)  =
     (
-        SELECT MAX(LogSequence)-6
-        FROM [metricsvault].[Integration_AuditLog]        
+        SELECT DISTINCT CONVERT(DATE,ExecutionStartTime) 
+        FROM [metricsvault].[Integration_AuditLog]   
+        WHERE CONVERT(DATE,ExecutionStartTime) = CONVERT(DATE,GETDATE())     
     )
-    ORDER BY 3, 2 ASC
+ --   AND TargetSchema = 'CURATED'
+ --  AND TargetSchema IN ('DATAMART')
+    ORDER BY 4 DESC
+    ;
