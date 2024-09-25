@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[Employees] (
-    [EIN]           NVARCHAR (9)   NULL,
+    [EIN]           NVARCHAR (9)   NOT NULL,
     [ADUSER]        NVARCHAR (64)  NULL,
     [FIRST_NAME]    NVARCHAR (64)  NULL,
     [LAST_NAME]     NVARCHAR (64)  NULL,
@@ -25,7 +25,10 @@ CREATE TABLE [dbo].[Employees] (
     [DISTRICT_CODE] NVARCHAR (30)  NULL,
     [DISTRICT_NAME] NVARCHAR (128) NULL,
     [STATUS]        NVARCHAR (10)  NULL,
-    [UPDATED_ON]    DATETIME       NULL
+    [UPDATED_ON]    DATETIME       NULL,
+    [MIDDLE_NAME]   NVARCHAR (50)  NULL,
+    [ID]            INT            NULL,
+    [SSN_HASH]      NVARCHAR (50)  NULL
 );
 GO
 

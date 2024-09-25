@@ -102,11 +102,17 @@ CREATE TABLE [dbo].[Salesforce_Invoice_Item] (
     [Type__c]                           NVARCHAR (20)   NULL,
     [AltSync__c]                        NVARCHAR (5)    NULL,
     [FX5__ffx_Item_Type__c]             NVARCHAR (255)  NULL,
-    [Do_Not_Delete__c]                  NVARCHAR (5)    NULL
+    [Do_Not_Delete__c]                  NVARCHAR (5)    NULL,
+    CONSTRAINT [PK_Salesforce_Invoice_Item] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 GO
 
 ALTER TABLE [dbo].[Salesforce_Invoice_Item]
     ADD CONSTRAINT [PK_Salesforce_Invoice_Item] PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+
+CREATE NONCLUSTERED INDEX [NDX1_Salesforce_Invoice_Item]
+    ON [dbo].[Salesforce_Invoice_Item]([FX5__Invoice__c] ASC, [Id] ASC);
 GO
 

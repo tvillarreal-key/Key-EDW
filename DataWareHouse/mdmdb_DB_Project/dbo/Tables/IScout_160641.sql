@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[IScout_160641] (
     [wind_speed]       NVARCHAR (20)   NULL,
     [weather]          NVARCHAR (20)   NULL,
     [marketplace]      NVARCHAR (64)   NULL,
-    [lco]              NVARCHAR (64)   NULL,
+    [lco]              NVARCHAR (100)  NULL,
     [district_manager] NVARCHAR (64)   NULL,
     [supervisor]       NVARCHAR (64)   NULL,
     [oper_PIC]         NVARCHAR (64)   NULL,

@@ -145,7 +145,7 @@ CREATE TABLE [dbo].[IScout_154689] (
     [BATCH_ID]          INT             NULL,
     [S01_07]            NVARCHAR (1024) NULL,
     [S01_08]            NVARCHAR (64)   NULL,
-    [S01_09]            NVARCHAR (64)   NULL,
+    [S01_09]            NVARCHAR (256)  NULL,
     [S01_10]            NVARCHAR (64)   NULL,
     [S01_11]            NVARCHAR (64)   NULL,
     [S01_12]            NVARCHAR (64)   NULL,

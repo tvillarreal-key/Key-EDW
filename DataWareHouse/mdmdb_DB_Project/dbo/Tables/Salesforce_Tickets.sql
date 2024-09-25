@@ -240,7 +240,9 @@ CREATE TABLE [dbo].[Salesforce_Tickets] (
     [Invoice_Name]                            NVARCHAR (64)   NULL,
     [Invoice_Number]                          NVARCHAR (64)   NULL,
     [Inserted]                                DATETIME2 (7)   NULL,
-    [Updated]                                 DATETIME2 (7)   NULL
+    [Updated]                                 DATETIME2 (7)   NULL,
+    [Bid_Ticket_Type__c]                      NVARCHAR (256)  NULL,
+    CONSTRAINT [PK_Salesforce_Tickets] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 GO
 

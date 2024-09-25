@@ -21,7 +21,9 @@ CREATE TABLE [dbo].[D365_WorkOrders] (
     [WORKORDERLIFECYCLESTATEID]                 TEXT           NULL,
     [WORKORDERMAINTENANCEASSETCRITICALITYNAME]  TEXT           NULL,
     [WORKORDERMAINTENANCEASSETCRITICALITYVALUE] TEXT           NULL,
-    [WORKORDERTYPEID]                           TEXT           NULL
+    [WORKORDERTYPEID]                           TEXT           NULL,
+    [ExecutionRunId]                            NVARCHAR (100) NULL,
+    CONSTRAINT [PK_D365_WorkOrders] PRIMARY KEY CLUSTERED ([WORKORDERID] ASC)
 );
 GO
 

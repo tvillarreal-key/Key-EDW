@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[IScout_153573] (
     [S0_R10_companyRepName]      NVARCHAR (128)  NULL,
     [S0_R11_companyRepOnSite]    NVARCHAR (10)   NULL,
     [S0_R12_companyRepContacted] NVARCHAR (10)   NULL,
-    [S0_R13_well]                NVARCHAR (64)   NULL,
+    [S0_R13_well]                NVARCHAR (512)  NULL,
     [S0_R14_teamAdditionalNames] NVARCHAR (1024) NULL,
     [S0_R15_notes]               NVARCHAR (1024) NULL,
     [S1_R17]                     NVARCHAR (5)    NULL,

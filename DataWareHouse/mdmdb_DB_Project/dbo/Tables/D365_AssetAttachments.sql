@@ -10,7 +10,11 @@ CREATE TABLE [dbo].[D365_AssetAttachments] (
     [OBJECTID]               TEXT           NULL,
     [PATH]                   TEXT           NULL,
     [RESTRICTION]            TEXT           NULL,
-    [TYPEID]                 TEXT           NULL
+    [TYPEID]                 TEXT           NULL,
+    [MODIFIEDDATETIME]       DATETIME       NULL,
+    [MODIFIEDBY]             TEXT           NULL,
+    [ExecutionRunId]         NVARCHAR (100) NULL,
+    CONSTRAINT [PK_D365_AssetAttachments] PRIMARY KEY CLUSTERED ([DOCUMENTID] ASC)
 );
 GO
 

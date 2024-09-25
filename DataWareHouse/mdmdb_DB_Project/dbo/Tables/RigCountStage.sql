@@ -19,7 +19,9 @@ CREATE TABLE [dbo].[RigCountStage] (
     [LOB]          NVARCHAR (20)  NULL,
     [Inserted]     DATETIME2 (7)  NULL,
     [Updated]      DATETIME2 (7)  NULL,
-    [LoadFile]     NVARCHAR (MAX) NULL
+    [LoadFile]     NVARCHAR (MAX) NULL,
+    [Submitted]    DATETIME2 (7)  NULL,
+    CONSTRAINT [PK_RigCountStage] PRIMARY KEY CLUSTERED ([YardName] ASC, [LOCO] ASC, [YardNum] ASC, [Marketplace] ASC, [AssetType] ASC, [AssetNum] ASC, [Date] ASC)
 );
 GO
 

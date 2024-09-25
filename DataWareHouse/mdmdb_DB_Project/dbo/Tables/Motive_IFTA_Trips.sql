@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[Motive_IFTA_Trips] (
-    [Id]             INT              NOT NULL,
+    [Id]             BIGINT           NOT NULL,
     [Date]           NVARCHAR (10)    NOT NULL,
     [Jurisdiction]   NVARCHAR (5)     NOT NULL,
     [Vehicle_Id]     INT              NOT NULL,
@@ -16,7 +16,8 @@ CREATE TABLE [dbo].[Motive_IFTA_Trips] (
     [End_Lat]        NUMERIC (12, 7)  NULL,
     [End_Lon]        NUMERIC (12, 7)  NULL,
     [Distance]       NUMERIC (20, 12) NULL,
-    [Time_Zone]      NVARCHAR (50)    NULL
+    [Time_Zone]      NVARCHAR (50)    NULL,
+    [inserted_on]    DATETIME         NULL
 );
 GO
 

@@ -181,11 +181,18 @@ CREATE TABLE [dbo].[Salesforce_Ticket_Item] (
     [Employee_Name_Report__c]              NVARCHAR (3900) NULL,
     [Employee_Number_Report__c]            NVARCHAR (3900) NULL,
     [Employee_Role_Report__c]              NVARCHAR (3900) NULL,
-    [Ticket_Status__c]                     NVARCHAR (3900) NULL
+    [Ticket_Status__c]                     NVARCHAR (3900) NULL,
+    [Bid_Ticket_Type__c]                   NVARCHAR (256)  NULL,
+    CONSTRAINT [PK_Salesforce_Ticket_Item] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 GO
 
 ALTER TABLE [dbo].[Salesforce_Ticket_Item]
     ADD CONSTRAINT [PK_Salesforce_Ticket_Item] PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+
+CREATE NONCLUSTERED INDEX [Salesforce_Tickets_Id]
+    ON [dbo].[Salesforce_Ticket_Item]([FX5__Ticket__c] ASC);
 GO
 

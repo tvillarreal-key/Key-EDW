@@ -190,7 +190,10 @@ CREATE TABLE [dbo].[IScout_287345D] (
     [S938_Parent_Link]                      NVARCHAR (128)  NULL,
     [S939_Surrogate]                        NVARCHAR (128)  NULL,
     [S999_InsertedOn_D]                     DATETIME        NULL,
-    [S999_BatchID_D]                        INT             NULL
+    [S999_BatchID_D]                        INT             NULL,
+    [S940_Owner_of_Pipe_Handler]            NVARCHAR (256)  NULL,
+    [S941_3rd_Party_Company_Name]           NVARCHAR (256)  NULL,
+    [S942_3rd_Party_Pipe_Handler_Asset_No]  NVARCHAR (50)   NULL
 );
 GO
 

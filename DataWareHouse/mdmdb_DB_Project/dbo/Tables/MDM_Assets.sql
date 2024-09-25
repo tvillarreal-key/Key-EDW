@@ -30,7 +30,28 @@ CREATE TABLE [dbo].[MDM_Assets] (
     [MARE_CODE]               NVARCHAR (20)  NULL,
     [MARE_NAME]               NVARCHAR (100) NULL,
     [YARD_CODE]               NVARCHAR (20)  NULL,
-    [YARD_NAME]               NVARCHAR (100) NULL
+    [YARD_NAME]               NVARCHAR (100) NULL,
+    [W_Status]                NVARCHAR (10)  NULL,
+    [Crew_Needed]             BIT            NULL,
+    [Avail_Date]              DATE           NULL,
+    [LastWT_Date]             DATE           NULL,
+    [Mod_Date]                DATE           NULL,
+    [Mod_User]                NVARCHAR (128) NULL,
+    [Note]                    NVARCHAR (512) NULL,
+    [Customer]                NVARCHAR (100) NULL,
+    [JobType]                 NVARCHAR (50)  NULL,
+    [Supervisor]              NVARCHAR (50)  NULL,
+    [Operator]                NVARCHAR (50)  NULL,
+    [Directions]              NVARCHAR (512) NULL,
+    [CompanyMan]              NVARCHAR (50)  NULL,
+    [CompanyManPhone]         NVARCHAR (50)  NULL,
+    [Daylight24HR]            NVARCHAR (50)  NULL,
+    [Size]                    NVARCHAR (50)  NULL,
+    [UsedByRigYard]           NVARCHAR (20)  NULL,
+    [UsedByRigNum]            NVARCHAR (20)  NULL,
+    [Source_LastUpdateDate]   DATETIME2 (7)  NULL,
+    [Source_LastUpdateBy]     NVARCHAR (128) NULL,
+    CONSTRAINT [PK_MDM_Assets] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 GO
 

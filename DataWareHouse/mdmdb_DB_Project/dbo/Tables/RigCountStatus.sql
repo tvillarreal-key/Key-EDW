@@ -7,6 +7,7 @@ CREATE TABLE [dbo].[RigCountStatus] (
     [Marketplace]  NVARCHAR (50)  NOT NULL,
     [AssetType]    NVARCHAR (50)  NOT NULL,
     [AssetNum]     NVARCHAR (20)  NOT NULL,
+    [MDM_AssetNum] NVARCHAR (20)  NULL,
     [Supervisor]   NVARCHAR (50)  NULL,
     [Operator]     NVARCHAR (50)  NULL,
     [Client]       NVARCHAR (50)  NULL,
@@ -19,7 +20,8 @@ CREATE TABLE [dbo].[RigCountStatus] (
     [PipeFeet]     NVARCHAR (20)  NULL,
     [LOB]          NVARCHAR (20)  NULL,
     [Submitted]    DATETIME2 (7)  NULL,
-    [Updated]      DATETIME2 (7)  NULL
+    [Updated]      DATETIME2 (7)  NULL,
+    CONSTRAINT [PK_RigCountStatus] PRIMARY KEY CLUSTERED ([RowID] ASC)
 );
 GO
 

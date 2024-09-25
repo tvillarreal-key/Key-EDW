@@ -169,7 +169,7 @@ CREATE TABLE [dbo].[IScout_280343D] (
     [S917_S7_Description]                     NVARCHAR (1024) NULL,
     [S918_S7_Safety_Compliance_Issue]         NVARCHAR (128)  NULL,
     [S919_Summary]                            NVARCHAR (128)  NULL,
-    [S920_Additional_Comments]                NVARCHAR (128)  NULL,
+    [S920_Additional_Comments]                NVARCHAR (2048) NULL,
     [S921_Yes]                                NVARCHAR (128)  NULL,
     [S922_No]                                 NVARCHAR (128)  NULL,
     [S923_NA]                                 NVARCHAR (128)  NULL,
