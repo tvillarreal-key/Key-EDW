@@ -1,8 +1,11 @@
----- dwhdb-PROD --------------------------------------------
--- Full Run
----- dwhdb-DEV --------------------------------------------
--- Full Run
-SELECT [LogSequence]
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP VIEW IF EXISTS [metricsvault].[vw_lastrun_auditlog_counts];
+GO
+CREATE VIEW [metricsvault].[vw_lastrun_auditlog_counts] AS
+SELECT TOP 1000 [LogSequence]
       ,[TargetSchema]
       ,[TargetName]
       ,[ExecutionEndTime]
@@ -16,11 +19,6 @@ SELECT [LogSequence]
         FROM [metricsvault].[Integration_AuditLog]   
         WHERE CONVERT(DATE,ExecutionStartTime) = CONVERT(DATE,GETDATE())     
     )
- --   AND TargetSchema = 'CURATED'
- --  AND TargetSchema IN ('DATAMART')
-    ORDER BY 4 DESC
-    ;
-
-    select *
-    from datamart.dimasset
-    ;
+  ORDER BY 4 DESC   
+;
+GO
