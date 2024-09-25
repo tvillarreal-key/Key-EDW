@@ -98,7 +98,7 @@ BEGIN
     FROM reporting.MDM_Assets
     JOIN    (SELECT * 
             FROM reporting.MDM_AssetAttr
-            WHERE attr_code = 'GrossVehicleWeight') AS GrossVehicleWeight
+            WHERE UPPER(attr_code) LIKE '%WEIGHT%') AS GrossVehicleWeight
     ON reporting.MDM_Assets.asset_num = GrossVehicleWeight.asset_num
 
 /* ---------------------------------------------------------------- 

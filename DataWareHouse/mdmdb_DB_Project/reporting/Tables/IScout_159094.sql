@@ -107,7 +107,8 @@ CREATE TABLE [reporting].[IScout_159094] (
     [r02_kes]                                                                 INT            NULL,
     [r02_3rd_party]                                                           INT            NULL,
     [upload_date]                                                             DATETIME       NULL,
-    [work_order_id]                                                           NVARCHAR (255) NULL
+    [work_order_id]                                                           NVARCHAR (255) NULL,
+    [q_all_defects]                                                           NVARCHAR (5)   NULL
 );
 GO
 
