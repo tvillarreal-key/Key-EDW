@@ -13,7 +13,7 @@ select ein, [162] as "Date", [231] as "Employee Name",[235] as "Job Title", [233
 [209] as "Can we discuss your progress in the next 6 months?",[219] as "Employee Email",[220] as "Manager Email",[267] as "Manager Name",[214] as "Please select a time and date for 6 month check-in.",
 [252] as "Name of Person Completing Form"
 from 
-(select answer, ein, question_id from JOT_Submissions WHERE form_id = '211176658553158' and ein is not null) J
+(select id, answer, ein, question_id from JOT_Submissions WHERE form_id = '211176658553158' and ein is not null) J
 PIVOT
 (
  MAX(answer)   
