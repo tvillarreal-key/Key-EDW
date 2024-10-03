@@ -4,6 +4,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 --DROP PROCEDURE [reporting].[sp_dot_populate_bi_fields];
+GO
 CREATE PROCEDURE [reporting].[sp_dot_populate_bi_fields] 
 AS
 BEGIN

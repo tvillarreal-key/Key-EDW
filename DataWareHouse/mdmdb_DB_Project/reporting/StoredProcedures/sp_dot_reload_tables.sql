@@ -3,7 +3,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
---DROP PROCEDURE [reporting].[sp_dot_reload_tables]
+DROP PROCEDURE [reporting].[sp_dot_reload_tables]
+GO
 CREATE PROCEDURE [reporting].[sp_dot_reload_tables] 
 AS
 BEGIN 

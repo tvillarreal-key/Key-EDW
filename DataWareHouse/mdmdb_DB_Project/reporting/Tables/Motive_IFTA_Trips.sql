@@ -2,12 +2,14 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+DROP TABLE IF EXISTS [reporting].[Motive_IFTA_Trips]
+GO
 CREATE TABLE [reporting].[Motive_IFTA_Trips](
 	[id] [bigint] NOT NULL,
 	[date] [date] NULL,
 	[jurisdiction] [nvarchar](5) NOT NULL,
 	[vehicle_id] [int] NOT NULL,
-	[asset_num] [nvarchar](20) NOT NULL,
+	[asset_num] [nvarchar](128) NOT NULL,
 	[year] [int] NULL,
 	[make] [nvarchar](20) NULL,
 	[model] [nvarchar](50) NULL,
@@ -21,6 +23,7 @@ CREATE TABLE [reporting].[Motive_IFTA_Trips](
 	[end_lon] [numeric](12, 7) NULL,
 	[distance] [numeric](20, 12) NULL,
 	[time_zone] [nvarchar](50) NULL,
+	[inserted_on] [datetime] NULL,	
 	[dvir_record] [bit] NULL,
 	[upload_date] [datetime] NULL
 ) ON [PRIMARY]

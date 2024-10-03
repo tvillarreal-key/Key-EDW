@@ -1,3 +1,10 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+DROP VIEW [reporting].[vw_dot_motive]
+GO
+
 CREATE VIEW [reporting].[vw_dot_motive] AS
 SELECT  [date], 
         jurisdiction, 
