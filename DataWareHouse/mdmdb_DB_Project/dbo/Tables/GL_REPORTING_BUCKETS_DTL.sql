@@ -1,9 +1,15 @@
-CREATE TABLE [dbo].[GL_REPORTING_BUCKETS_DTL] (
-    [GL_Account]      VARCHAR (50)   NULL,
-    [Level1]          NVARCHAR (50)  NULL,
-    [Level2]          NVARCHAR (50)  NULL,
-    [Level3]          NVARCHAR (100) NULL,
-    [Level_Of_Detail] VARCHAR (1)    NOT NULL
-);
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GL_REPORTING_BUCKETS_DTL](
+	[GL_Account] [varchar](50) NULL,
+	[Level1] [nvarchar](50) NULL,
+	[Level2] [nvarchar](50) NULL,
+	[Level3] [nvarchar](100) NULL,
+	[Level_Of_Detail] [varchar](1) NOT NULL
+) ON [PRIMARY]
 GO
 
+CREATE INDEX IDX_GL_REPORTING_BUCKETS_DTL_GL_ACCOUNT
+ON dbo.GL_REPORTING_BUCKETS_DTL (GL_ACCOUNT);
