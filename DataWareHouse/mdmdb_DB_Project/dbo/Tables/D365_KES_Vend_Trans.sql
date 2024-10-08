@@ -1,57 +1,70 @@
-CREATE TABLE [dbo].[D365_KES_Vend_Trans] (
-    [JOURNALNUM]              VARCHAR (50)   NULL,
-    [ACCOUNTNUM]              INT            NULL,
-    [AMOUNTCUR]               FLOAT (53)     NULL,
-    [AMOUNTMST]               FLOAT (53)     NULL,
-    [APPROVED]                TEXT           NULL,
-    [APPROVEDDATE]            DATETIME2 (7)  NULL,
-    [APPROVER]                TEXT           NULL,
-    [ARRIVAL]                 TEXT           NULL,
-    [CANCEL]                  TEXT           NULL,
-    [CLOSED]                  DATETIME2 (7)  NULL,
-    [COMPANYBANKACCOUNTID]    TEXT           NULL,
-    [CORRECT]                 TEXT           NULL,
-    [CREATEDBY1]              TEXT           NULL,
-    [CREATEDDATETIME1]        DATETIME2 (7)  NULL,
-    [CREATEDTRANSACTIONID1]   FLOAT (53)     NULL,
-    [CURRENCYCODE]            TEXT           NULL,
-    [DATAAREAID1]             TEXT           NULL,
-    [DOCUMENTDATE]            DATETIME2 (7)  NULL,
-    [DOCUMENTNUM]             VARCHAR (50)   NULL,
-    [DUEDATE]                 DATETIME2 (7)  NULL,
-    [EXCHADJUSTMENT]          FLOAT (53)     NULL,
-    [EXCHRATE]                FLOAT (53)     NULL,
-    [INVOICE]                 VARCHAR (50)   NULL,
-    [INVOICEPROJECT]          TEXT           NULL,
-    [LASTSETTLEACCOUNTNUM]    INT            NULL,
-    [LASTSETTLECOMPANY]       TEXT           NULL,
-    [LASTSETTLEDATE]          DATETIME2 (7)  NULL,
-    [LASTSETTLEVOUCHER]       TEXT           NULL,
-    [MODIFIEDBY1]             TEXT           NULL,
-    [MODIFIEDDATETIME1]       DATETIME2 (7)  NULL,
-    [MODIFIEDTRANSACTIONID1]  FLOAT (53)     NULL,
-    [PAYMMODE]                TEXT           NULL,
-    [PAYMREFERENCE]           TEXT           NULL,
-    [PAYMSPEC]                TEXT           NULL,
-    [PAYMTERM]                TEXT           NULL,
-    [POSTINGPROFILE]          TEXT           NULL,
-    [PREPAYMENT]              TEXT           NULL,
-    [PROMISSORYNOTESTATUS]    TEXT           NULL,
-    [RECID1]                  FLOAT (53)     NOT NULL,
-    [SETTLEAMOUNTCUR]         FLOAT (53)     NULL,
-    [SETTLEAMOUNTMST]         FLOAT (53)     NULL,
-    [THIRDPARTYBANKACCOUNTID] TEXT           NULL,
-    [TRANSDATE]               DATETIME2 (7)  NULL,
-    [TRANSTYPE]               TEXT           NULL,
-    [TXT]                     TEXT           NULL,
-    [VOUCHER]                 TEXT           NULL,
-    [BATCH_LOADED]            NVARCHAR (100) NULL,
-    [ExecutionRunId]          NVARCHAR (100) NULL,
-    CONSTRAINT [PK_D365_KES_Vend_Trans] PRIMARY KEY CLUSTERED ([RECID1] ASC)
-);
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[D365_KES_Vend_Trans](
+	[JOURNALNUM] [varchar](50) NULL,
+	[ACCOUNTNUM] [int] NULL,
+	[AMOUNTCUR] [float] NULL,
+	[AMOUNTMST] [float] NULL,
+	[APPROVED] [text] NULL,
+	[APPROVEDDATE] [datetime2](7) NULL,
+	[APPROVER] [text] NULL,
+	[ARRIVAL] [text] NULL,
+	[CANCEL] [text] NULL,
+	[CLOSED] [datetime2](7) NULL,
+	[COMPANYBANKACCOUNTID] [text] NULL,
+	[CORRECT] [text] NULL,
+	[CREATEDBY1] [text] NULL,
+	[CREATEDDATETIME1] [datetime2](7) NULL,
+	[CREATEDTRANSACTIONID1] [float] NULL,
+	[CURRENCYCODE] [text] NULL,
+	[DATAAREAID1] [text] NULL,
+	[DOCUMENTDATE] [datetime2](7) NULL,
+	[DOCUMENTNUM] [varchar](50) NULL,
+	[DUEDATE] [datetime2](7) NULL,
+	[EXCHADJUSTMENT] [float] NULL,
+	[EXCHRATE] [float] NULL,
+	[INVOICE] [varchar](50) NULL,
+	[INVOICEPROJECT] [text] NULL,
+	[LASTSETTLEACCOUNTNUM] [int] NULL,
+	[LASTSETTLECOMPANY] [text] NULL,
+	[LASTSETTLEDATE] [datetime2](7) NULL,
+	[LASTSETTLEVOUCHER] [text] NULL,
+	[MODIFIEDBY1] [text] NULL,
+	[MODIFIEDDATETIME1] [datetime2](7) NULL,
+	[MODIFIEDTRANSACTIONID1] [float] NULL,
+	[PAYMMODE] [text] NULL,
+	[PAYMREFERENCE] [text] NULL,
+	[PAYMSPEC] [text] NULL,
+	[PAYMTERM] [text] NULL,
+	[POSTINGPROFILE] [text] NULL,
+	[PREPAYMENT] [text] NULL,
+	[PROMISSORYNOTESTATUS] [text] NULL,
+	[RECID1] [float] NOT NULL,
+	[SETTLEAMOUNTCUR] [float] NULL,
+	[SETTLEAMOUNTMST] [float] NULL,
+	[THIRDPARTYBANKACCOUNTID] [text] NULL,
+	[TRANSDATE] [datetime2](7) NULL,
+	[TRANSTYPE] [text] NULL,
+	[TXT] [text] NULL,
+	[VOUCHER] [text] NULL,
+	[BATCH_LOADED] [nvarchar](100) NULL,
+	[ExecutionRunId] [nvarchar](100) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[D365_KES_Vend_Trans] ADD  CONSTRAINT [PK_D365_KES_Vend_Trans] PRIMARY KEY CLUSTERED 
+(
+	[RECID1] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+CREATE NONCLUSTERED INDEX [IDX_NC_D365_KES_Vend_Trans_ExecutionRunId] ON [dbo].[D365_KES_Vend_Trans]
+(
+	[ExecutionRunId] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[D365_KES_Vend_Trans]
-    ADD CONSTRAINT [PK_D365_KES_Vend_Trans] PRIMARY KEY CLUSTERED ([RECID1] ASC);
-GO
-
+ALTER TABLE dbo.D365_KES_Vend_Trans
+ADD VOUCHER_VARCHAR AS CAST(VOUCHER AS VARCHAR(50)); -- Adjust the length as needed

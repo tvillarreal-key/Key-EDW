@@ -1,21 +1,29 @@
-CREATE TABLE [dbo].[D365_VendorJournalLines] (
-    [JOURNALBATCHNUMBER]           VARCHAR (50)    NULL,
-    [LINENUMBER]                   NUMERIC (18, 3) NULL,
-    [ACCOUNTDISPLAYVALUE]          VARCHAR (50)    NULL,
-    [ASSETID]                      VARCHAR (50)    NULL,
-    [ASSETTRANSTYPE]               VARCHAR (50)    NULL,
-    [CREDIT]                       NUMERIC (18, 6) NULL,
-    [CURRENCY]                     VARCHAR (10)    NULL,
-    [DATE]                         VARCHAR (20)    NULL,
-    [DEFAULTDIMENSIONDISPLAYVALUE] VARCHAR (50)    NULL,
-    [DELIVERYDATE]                 VARCHAR (20)    NULL,
-    [DESCRIPTION]                  VARCHAR (MAX)   NULL,
-    [DUEDATE]                      VARCHAR (20)    NULL,
-    [INVOICE]                      VARCHAR (50)    NULL,
-    [INVOICEDATE]                  VARCHAR (20)    NULL,
-    [OFFSETACCOUNTDISPLAYVALUE]    VARCHAR (50)    NULL,
-    [TRANSACTIONTYPE]              VARCHAR (50)    NULL,
-    [VOUCHER]                      VARCHAR (50)    NULL
-);
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[D365_VendorJournalLines](
+	[JOURNALBATCHNUMBER] [varchar](50) NULL,
+	[LINENUMBER] [numeric](18, 3) NULL,
+	[ACCOUNTDISPLAYVALUE] [varchar](50) NULL,
+	[ASSETID] [varchar](50) NULL,
+	[ASSETTRANSTYPE] [varchar](50) NULL,
+	[CREDIT] [numeric](18, 6) NULL,
+	[CURRENCY] [varchar](10) NULL,
+	[DATE] [varchar](20) NULL,
+	[DEFAULTDIMENSIONDISPLAYVALUE] [varchar](50) NULL,
+	[DELIVERYDATE] [varchar](20) NULL,
+	[DESCRIPTION] [varchar](max) NULL,
+	[DUEDATE] [varchar](20) NULL,
+	[INVOICE] [varchar](50) NULL,
+	[INVOICEDATE] [varchar](20) NULL,
+	[OFFSETACCOUNTDISPLAYVALUE] [varchar](50) NULL,
+	[TRANSACTIONTYPE] [varchar](50) NULL,
+	[VOUCHER] [varchar](50) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
+DROP INDEX IF EXISTS IDX_D365_VendorJournalLines_VOUCHER ON dbo.D365_VendorJournalLines;
+GO
+CREATE INDEX IDX_D365_VendorJournalLines_VOUCHER
+ON dbo.D365_VendorJournalLines (JOURNALBATCHNUMBER, VOUCHER);
