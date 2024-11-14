@@ -10,5 +10,6 @@ FROM
     INFORMATION_SCHEMA.TABLES
 WHERE 
     TABLE_CATALOG = @table_catalog 
- --   AND TABLE_SCHEMA = @table_schema
-ORDER BY 1,2,3,4
+    AND TABLE_SCHEMA = @table_schema
+    AND TABLE_NAME LIKE 'HESS_%'
+ORDER BY 4,3
