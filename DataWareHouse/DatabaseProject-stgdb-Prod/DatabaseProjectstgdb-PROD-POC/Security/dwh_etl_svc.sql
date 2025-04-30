@@ -1,0 +1,5 @@
+CREATE USER [dwh_etl_svc] WITHOUT LOGIN;
+
+
+GO
+

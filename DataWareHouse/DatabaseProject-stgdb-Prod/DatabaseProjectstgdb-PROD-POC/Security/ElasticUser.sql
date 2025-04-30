@@ -1,0 +1,5 @@
+CREATE USER [ElasticUser] WITHOUT LOGIN;
+
+
+GO
+

@@ -1,0 +1,5 @@
+CREATE USER [dwh_dev] WITHOUT LOGIN;
+
+
+GO
+
