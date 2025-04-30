@@ -1,3 +1,0 @@
-CREATE USER [hru_admin] WITHOUT LOGIN;
-GO
-
