@@ -35,9 +35,11 @@ CREATE TABLE [dbo].[D365_MainAccount](
 	[VALIDATEPOSTINGTYPE] [varchar](20) NULL,
 	[VALIDATEUSER] [varchar](20) NULL,
 	[ExecutionRunId] [nvarchar](100) NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
+) ON 
 
-CREATE INDEX IDX_D365_MainAccount_MAINACCOUNTID
-ON dbo.D365_MainAccount (MAINACCOUNTID);
+
+GO
+CREATE NONCLUSTERED INDEX [idx_D365_MainAccount_ExecutionRunId]
+    ON [dbo].[D365_MainAccount]([MAINACCOUNTID] ASC, [ExecutionRunId] ASC);
+GO
 

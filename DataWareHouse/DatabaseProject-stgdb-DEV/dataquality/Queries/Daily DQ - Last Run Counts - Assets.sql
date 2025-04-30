@@ -15,7 +15,7 @@ SELECT [LogSequence]
     )
  --   AND TargetSchema = 'CURATED'
  --  AND TargetSchema IN ('DATAMART')
-    ORDER BY 4 DESC
+    ORDER BY 2,3
     ;
 
 SELECT CONVERT(DATE,ExecutionStartTime) StartDate

@@ -4,12 +4,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 DROP TABLE IF EXISTS [reporting].[Hess_Rig_List_Hist]
 GO
-CREATE TABLE [reporting].[Hess_Rig_List_Hist](
-	[RIG] [nvarchar](10) NOT NULL,
-	[RIGTYPE] [nvarchar](20) NOT NULL,
-	[RIGSUBTYPE] [nvarchar](20) NOT NULL,
-	[OPDATE] [date] NOT NULL
-) ON [PRIMARY]
+CREATE TABLE [reporting].[Hess_Rig_List_Hist] (
+    [RIG]        NVARCHAR (10) NOT NULL,
+    [RIGTYPE]    NVARCHAR (20) NOT NULL,
+    [RIGSUBTYPE] NVARCHAR (20) NOT NULL,
+    [OPDATE]     DATE          NOT NULL
+);
 GO
 
 CREATE INDEX IDX_Hess_Rig_List_Hist_RIG_OPDATE
@@ -21,3 +21,26 @@ INCLUDE (RIGTYPE);
 
 CREATE INDEX IDX_Hess_Rig_List_Hist_RIG
 ON reporting.Hess_Rig_List_Hist (RIG);
+
+GO
+CREATE NONCLUSTERED INDEX [IDX_Hess_Rig_List_Hist_RIG]
+    ON [reporting].[Hess_Rig_List_Hist]([RIG] ASC);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IDX_Hess_Rig_List_Hist_RIG_OPDATE]
+    ON [reporting].[Hess_Rig_List_Hist]([RIG] ASC, [OPDATE] ASC);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IDX_Hess_Rig_List_Hist_RIG_OPDATE_RIGTYPE]
+    ON [reporting].[Hess_Rig_List_Hist]([RIG] ASC, [OPDATE] ASC)
+    INCLUDE([RIGTYPE]);
+GO
+
+
+CREATE NONCLUSTERED INDEX [IX_REPORTING_Hess_Rig_List_Hist]
+    ON [reporting].[Hess_Rig_List_Hist]([RIG] ASC)
+    INCLUDE([RIGTYPE], [RIGSUBTYPE], [OPDATE]);
+GO
+
