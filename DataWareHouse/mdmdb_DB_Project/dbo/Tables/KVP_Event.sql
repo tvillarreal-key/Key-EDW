@@ -1,0 +1,13 @@
+CREATE TABLE [dbo].[KVP_Event] (
+    [EVENT_ID]      NUMERIC (18)  NOT NULL,
+    [DESCRIPTION]   VARCHAR (100) NULL,
+    [ALARM]         VARCHAR (10)  NULL,
+    [SERVICE_LEVEL] INT           NULL,
+    [DISPLAY_LEVEL] INT           NULL
+);
+GO
+
+ALTER TABLE [dbo].[KVP_Event]
+    ADD CONSTRAINT [PK_KVP_Event] PRIMARY KEY CLUSTERED ([EVENT_ID] ASC);
+GO
+
