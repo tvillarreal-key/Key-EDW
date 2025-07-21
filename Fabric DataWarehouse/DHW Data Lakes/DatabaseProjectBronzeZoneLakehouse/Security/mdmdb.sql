@@ -1,0 +1,6 @@
+CREATE SCHEMA [mdmdb]
+    AUTHORIZATION [dbo];
+
+
+GO
+
