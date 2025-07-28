@@ -1,0 +1,7 @@
+SET ANSI_PADDING ON
+GO
+DROP INDEX IF EXISTS [dbo].[IDX_NC_LaborIncremental2_CustomerID_WorkDate]
+GO
+CREATE NONCLUSTERED INDEX [IDX_NC_LaborIncremental2_CustomerID_WorkDate]
+ON [dbo].[LaborIncremental2] ([CUSTOMER_ID],[WORK_DATE])
+INCLUDE ([ASSET_NUMBER],[EMPLOYEE_ID],[DURATION]);

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "qr2fmJBKYYIH01FLlyhPCvuSmagW87L+zW4b/0iClfswb7rgmEmOVChHERaHcDZN/1OkWMWB3vejTICxxT4kKA==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\tvillarreal\\OneDrive\\Work Files\\Key Energy\\Key-EDW\\DataWareHouse\\DatabaseProject-dwhdb-DEV\\DatabaseProject-dwhdb-DEV.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\tvillarreal\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

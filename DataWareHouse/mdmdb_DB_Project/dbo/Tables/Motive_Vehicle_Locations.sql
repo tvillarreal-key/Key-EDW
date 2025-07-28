@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[Motive_Vehicle_Locations] (
+    [vehicle_id]                        INT              NULL,
+    [located_at]                        VARCHAR (40)     NULL,
+    [lat]                               DECIMAL (18, 8)  NULL,
+    [lon]                               DECIMAL (18, 8)  NULL,
+    [id]                                VARCHAR (50)     NULL,
+    [type]                              VARCHAR (20)     NULL,
+    [description]                       VARCHAR (256)    NULL,
+    [speed]                             VARCHAR (50)     NULL,
+    [bearing]                           NUMERIC (18, 2)  NULL,
+    [battery_voltage]                   DECIMAL (5, 2)   NULL,
+    [odometer]                          DECIMAL (20, 11) NULL,
+    [true_odometer]                     DECIMAL (20, 11) NULL,
+    [engine_hours]                      DECIMAL (20, 11) NULL,
+    [true_engine_hours]                 DECIMAL (20, 11) NULL,
+    [fuel]                              DECIMAL (20, 11) NULL,
+    [fuel_primary_remaining_percentage] DECIMAL (5, 1)   NULL,
+    [fuel_secondary_remaing_percentage] DECIMAL (5, 1)   NULL,
+    [eld_id]                            INT              NULL,
+    [eld_identifier]                    VARCHAR (50)     NULL,
+    [eld_model]                         VARCHAR (50)     NULL,
+    [driver_id]                         INT              NULL,
+    [driver_first_name]                 VARCHAR (128)    NULL,
+    [driver_last_name]                  VARCHAR (128)    NULL,
+    [driver_username]                   VARCHAR (128)    NULL,
+    [driver_email]                      VARCHAR (128)    NULL,
+    [driver_company_id]                 VARCHAR (10)     NULL,
+    [driver_status]                     VARCHAR (20)     NULL,
+    [driver_role]                       VARCHAR (20)     NULL,
+    [posted_summary]                    BIT              NULL
+);
+GO
+

@@ -1,0 +1,6 @@
+CREATE DATABASE SCOPED CREDENTIAL [ElasticDBCredential]
+    WITH IDENTITY = N'ElasticUser';
+
+
+GO
+

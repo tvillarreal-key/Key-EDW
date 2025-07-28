@@ -1,0 +1,8 @@
+SELECT [description_text]
+, COUNT(*) CNT 
+  FROM [gold].[vw_CuratedTickets]
+  WHERE [description_text] like '%Kimberly%'
+ GROUP BY description_text
+ ORDER BY 1 DESC 
+
+ -- &nbsp; &nbsp; Brian Cunningham 12400 West I-20 E,&nbsp;Odessa, TX 79765 Service Desk Phone Number: (866) 638-3719 O: 432.571.7471 | M:&nbsp;432.901.6328 &nbsp; &nbsp; From:&nbsp;Robert Mackenzie <rmackenzie@keyenergy.com>&nbsp; &nbsp;Sent: Tuesday, April 1, 2025 5:13 PM &nbsp;To: Brian Cunningham <bcunningham@keyenergy.com> &nbsp;Cc: Andrew Kimberly <akimberly@keyenergy.com> &nbsp;Subject: Re: Transfer of access to Andy Cooney's mailbox from Saurin Ganatra to Andrew Kimberly &nbsp; Sounds great, thank you.&nbsp; Approved. &nbsp; Rob MacKenzie Senior Vice President & Chief Financial Officer 1500 CityWest Blvd., Suite 800, Houston, TX 77042 o: 713-651-4430 | c: 832-206-2650 &nbsp; From:&nbsp;Brian Cunningham <bcunningham@keyenergy.com> &nbsp;Sent: Tuesday, April 1, 2025 4:06 PM &nbsp;To: Robert Mackenzie <rmackenzie@keyenergy.com> &nbsp;Cc: Andrew Kimberly <akimberly@keyenergy.com> &nbsp;Subject: Transfer of access to Andy Cooney's mailbox from Saurin Ganatra to Andrew Kimberly &nbsp; Good afternoon, Saurin had access to Andy Cooney’s mailbox for 90 days, which still has about a month before it expires. Since Andrew now is in Andy’s old position, I thought we should consider transferring that access to him. Please let me know if you approve of this or would prefer another option. Thank you, &nbsp; Brian Cunningham 12400 West I-20 E,&nbsp;Odessa, TX 79765 Service Desk Phone Number: (866) 638-3719 O: 432.571.7471 | M: 432.901.6328 &nbsp; &nbsp;

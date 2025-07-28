@@ -1,0 +1,5 @@
+SET ANSI_PADDING ON
+GO
+DROP INDEX IF EXISTS [dbo].[IDX_NC_KeyViewActivities2_JobNumber]
+GO
+

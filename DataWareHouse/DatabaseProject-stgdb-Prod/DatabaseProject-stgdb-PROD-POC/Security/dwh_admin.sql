@@ -1,0 +1,5 @@
+CREATE USER [dwh_admin] WITHOUT LOGIN;
+
+
+GO
+

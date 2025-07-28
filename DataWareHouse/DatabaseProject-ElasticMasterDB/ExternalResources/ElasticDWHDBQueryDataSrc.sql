@@ -1,0 +1,9 @@
+CREATE EXTERNAL DATA SOURCE [ElasticDWHDBQueryDataSrc]
+    WITH (
+    TYPE = RDBMS,
+    LOCATION = N'SRVDWH-DEV.DATABASE.WINDOWS.NET',
+    DATABASE_NAME = N'dwhdb-DEV',
+    CREDENTIAL = [ElasticDBCredential]
+    );
+GO
+

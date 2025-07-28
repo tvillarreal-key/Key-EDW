@@ -1,0 +1,6 @@
+CREATE SEQUENCE [dbo].[KVP_SensorData_RAW_SEQ]
+    AS INT
+    START WITH 1
+    INCREMENT BY 1;
+GO
+

@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[IScout_336404_Emps] (
+    [EIN]         NVARCHAR (9)   NULL,
+    [REPORT_WEEK] NVARCHAR (512) NULL,
+    [UPDATED_ON]  DATETIME       NULL
+);
+GO
+

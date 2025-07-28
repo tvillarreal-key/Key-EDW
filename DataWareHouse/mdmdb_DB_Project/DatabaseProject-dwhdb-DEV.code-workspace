@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "DatabaseProject-dwhdb-DEV",
+			"path": "../DatabaseProject-dwhdb-DEV"
+		},
+		{
+			"name": "DB_Projects",
+			"path": "../../../ProjectFiles/DB_Projects"
+		}
+	],
+	"settings": {}
+}

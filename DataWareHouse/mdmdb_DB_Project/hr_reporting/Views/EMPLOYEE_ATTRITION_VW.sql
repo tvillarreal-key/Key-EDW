@@ -1,0 +1,541 @@
+CREATE VIEW [HR_REPORTING].[EMPLOYEE_ATTRITION_VW] AS 
+
+WITH ACTION_PVT AS (
+/* PIVOT THE ACTION COLUMN AND COUNT THE VALUES */
+    SELECT 
+    EMPLOYEEID AS EIN, 
+        [PRO] AS ACTION_PRO, 
+        [PJC] AS ACTION_PJC, 
+        [DEM] AS ACTION_DEM, 
+        [MGR] AS ACTION_MGR, 
+        [JRC] AS ACTION__JRC, 
+        [HIR] AS ACTION_HIR, 
+        [DTA] AS ACTION_DTA, 
+        [LOA] AS ACTION_LOA, 
+        [RFL] AS ACTION_RFL, 
+        [TER] AS ACTION_TER, 
+        [POS] AS ACTION_POS, 
+        [XFR] AS ACTION_XFR, 
+        [PAY] AS ACTION_PAY, 
+        [REH] AS ACTION_REH
+    FROM (
+        SELECT 
+            EmployeeID,
+            ACTION
+        FROM DBO.ADP_Transactions
+    ) AS SOURCETABLE
+    PIVOT
+    (
+        COUNT(ACTION)
+        FOR ACTION IN ( [PRO], [PJC], [DEM], [MGR], [JRC], [HIR], [DTA], [LOA], [RFL], [TER], [POS], [XFR], [PAY], [REH])
+    ) AS PVT 
+)
+
+/* PIVOT THE REASONCODE COLUMN AND COUNT THE VALUES */
+, REASON AS (
+    SELECT 
+        EMPLOYEEID AS EIN, 
+        [VCP] AS REASON_VCP,
+        [SUP] AS REASON_SUP,
+        [PRO] AS REASON_PRO,
+        [MAS] AS REASON_MAS,
+        [AWO] AS REASON_AWO,
+        [RTS] AS REASON_RTS,
+        [NEU] AS REASON_NEU,
+        [MRG] AS REASON_MRG,
+        [RGR] AS REASON_RGR,
+        [AOE] AS REASON_AOE,
+        [QRG] AS REASON_QRG,
+        [MOR] AS REASON_MOR,
+        [NAW] AS REASON_NAW,
+        [STC] AS REASON_STC,
+        [MWD] AS REASON_MWD,
+        [FUR] AS REASON_FUR,
+        [FMA] AS REASON_FMA,
+        [HSI] AS REASON_HSI,
+        [FPD] AS REASON_FPD,
+        [NHR] AS REASON_NHR,
+        [WCL] AS REASON_WCL,
+        [CPR] AS REASON_CPR,
+        [WCF] AS REASON_WCF,
+        [ODT] AS REASON_ODT,
+        [USP] AS REASON_USP,
+        [DIV] AS REASON_DIV,
+        [NMP] AS REASON_NMP,
+        [TTL] AS REASON_TTL,
+        [RLA] AS REASON_RLA,
+        [LVE] AS REASON_LVE,
+        [OBC] AS REASON_OBC,
+        [ORG] AS REASON_ORG,
+        [WCP] AS REASON_WCP,
+        [ACQ] AS REASON_ACQ,
+        [JOB] AS REASON_JOB,
+        [MKT] AS REASON_MKT,
+        [FNT] AS REASON_FNT,
+        [CON] AS REASON_CON,
+        [RTI] AS REASON_RTI,
+        [NRG] AS REASON_NRG,
+        [EAC] AS REASON_EAC,
+        [MCM] AS REASON_MCM,
+        [TMP] AS REASON_TMP,
+        [MER] AS REASON_MER,
+        [FAM] AS REASON_FAM,
+        [ORS] AS REASON_ORS,
+        [AOS] AS REASON_AOS,
+        [PER] AS REASON_PER,
+        [MAT] AS REASON_MAT,
+        [MAD] AS REASON_MAD,
+        [UPD] AS REASON_UPD,
+        [JCH] AS REASON_JCH,
+        [RIF] AS REASON_RIF,
+        [UJR] AS REASON_UJR,
+        [DEA] AS REASON_DEA,
+        [MOT] AS REASON_MOT,
+        [LDY] AS REASON_LDY,
+        [JRC] AS REASON_JRC,
+        [COR] AS REASON_COR,
+        [LOC] AS REASON_LOC,
+        [PRF] AS REASON_PRF,
+        [AOD] AS REASON_AOD,
+        [FCF] AS REASON_FCF,
+        [PLN] AS REASON_PLN,
+        [UFR] AS REASON_UFR,
+        [MCL] AS REASON_MCL,
+        [MCO] AS REASON_MCO,
+        [NCP] AS REASON_NCP,
+        [CRJ] AS REASON_CRJ,
+        [PLA] AS REASON_PLA,
+        [RPL] AS REASON_RPL,
+        [ADJ] AS REASON_ADJ,
+        [QLT] AS REASON_QLT,
+        [MIL] AS REASON_MIL,
+        [LOA] AS REASON_LOA,
+        [CHG] AS REASON_CHG,
+        [PLM] AS REASON_PLM,
+        [COL] AS REASON_COL,
+        [FDT] AS REASON_FDT,
+        [RFL] AS REASON_RFL,
+        [RER] AS REASON_RER,
+        [SDI] AS REASON_SDI,
+        [REO] AS REASON_REO,
+        [LDW] AS REASON_LDW,
+        [PDL] AS REASON_PDL,
+        [ANW] AS REASON_ANW,
+        [CNF] AS REASON_CNF,
+        [RLD] AS REASON_RLD,
+        [FML] AS REASON_FML,
+        [QPR] AS REASON_QPR,
+        [REH] AS REASON_REH,
+        [INS] AS REASON_INS,
+        [DBL] AS REASON_DBL,
+        [VOL] AS REASON_VOL,
+        [XFR] AS REASON_XFR,
+        [ATT] AS REASON_ATT,
+        [TFL] AS REASON_TFL,
+        [LCF] AS REASON_LCF,
+        [MRR] AS REASON_MRR,
+        [STA] AS REASON_STA,
+        [NPS] AS REASON_NPS,
+        [BUS] AS REASON_BUS,
+        [ELI] AS REASON_ELI,
+        [RET] AS REASON_RET,
+        [LDN] AS REASON_LDN
+    FROM (
+         SELECT 
+            EmployeeID,
+            REASONCODE
+        FROM DBO.ADP_Transactions
+    ) AS SOURCETABLE
+    PIVOT
+    (
+        COUNT(REASONCODE)
+        FOR REASONCODE IN ([VCP],[SUP],[PRO],[MAS],[AWO],[RTS],[NEU],[MRG],[RGR],[AOE],
+                            [QRG],[MOR],[NAW],[STC],[MWD],[FUR],[FMA],[HSI],[FPD],[NHR],[WCL],
+                            [CPR],[WCF],[ODT],[USP],[DIV],[NMP],[TTL],[RLA],[LVE],[OBC],[ORG],
+                            [WCP],[ACQ],[JOB],[MKT],[FNT],[CON],[RTI],[NRG],[EAC],[MCM],[TMP],
+                            [MER],[FAM],[ORS],[AOS],[PER],[MAT],[MAD],[UPD],[JCH],[RIF],[UJR],
+                            [DEA],[MOT],[LDY],[JRC],[COR],[LOC],[PRF],[AOD],[FCF],[PLN],[UFR],
+                            [MCL],[MCO],[NCP],[CRJ],[PLA],[RPL],[ADJ],[QLT],[MIL],[LOA],[CHG],
+                            [PLM],[COL],[FDT],[RFL],[RER],[SDI],[REO],[LDW],[PDL],[ANW],[CNF],
+                            [RLD],[FML],[QPR],[REH],[INS],[DBL],[VOL],[XFR],[ATT],[TFL],[LCF],[MRR],
+                            [STA],[NPS],[BUS],[ELI],[RET],[LDN]
+                            )
+) PVT 
+)
+
+/* COUNT DISTINCT VALUES IN FEATURES WHERE THE VALUE ISN'T AS IMPORTANT AS JUST HOW MANY TIMES IT CHANGED */
+, COUNTS AS (
+    SELECT 
+        EMPLOYEEID AS EIN,
+        NAME,
+        --COUNT(DISTINCT LOCATIONCODE) AS LOCATION_COUNT, -- THIS IS THE COST LOCATION
+        COUNT(DISTINCT WORKLOCATION) AS WORKLOCATION_COUNT, -- THIS IS THE PHYSICAL LOCATION
+        COUNT(DISTINCT JOBTITLE) AS JOBTITLE_COUNT,
+        COUNT(DISTINCT LASTDATEOFHIRE) AS HIRED_COUNT,
+        COUNT(DISTINCT ReportsToMangerID) AS MANAGERS,
+        COUNT(DISTINCT DEPT_DISTRICTID) AS DEPARTMENTS
+    FROM DBO.ADP_Transactions 
+    GROUP BY EmployeeID, NAME
+    
+)
+
+/* COMBINE THE PIVOT CTE'S */
+, __INIT_PIVOT__ AS (
+    SELECT 
+        A.EIN,
+        A.ACTION_PRO, 
+        A.ACTION_PJC, 
+        A.ACTION_DEM, 
+        A.ACTION_MGR, 
+        A.ACTION__JRC, 
+        A.ACTION_HIR, 
+        A.ACTION_DTA, 
+        A.ACTION_LOA, 
+        A.ACTION_RFL, 
+        A.ACTION_TER, 
+        A.ACTION_POS, 
+        A.ACTION_XFR, 
+        A.ACTION_PAY, 
+        A.ACTION_REH,
+        R.REASON_VCP,
+        R.REASON_SUP,
+        R.REASON_PRO,
+        R.REASON_MAS,
+        R.REASON_AWO,
+        R.REASON_RTS,
+        R.REASON_NEU,
+        R.REASON_MRG,
+        R.REASON_RGR,
+        R.REASON_AOE,
+        R.REASON_QRG,
+        R.REASON_MOR,
+        R.REASON_NAW,
+        R.REASON_STC,
+        R.REASON_MWD,
+        R.REASON_FUR,
+        R.REASON_FMA,
+        R.REASON_HSI,
+        R.REASON_FPD,
+        R.REASON_NHR,
+        R.REASON_WCL,
+        R.REASON_CPR,
+        R.REASON_WCF,
+        R.REASON_ODT,
+        R.REASON_USP,
+        R.REASON_DIV,
+        R.REASON_NMP,
+        R.REASON_TTL,
+        R.REASON_RLA,
+        R.REASON_LVE,
+        R.REASON_OBC,
+        R.REASON_ORG,
+        R.REASON_WCP,
+        R.REASON_ACQ,
+        R.REASON_JOB,
+        R.REASON_MKT,
+        R.REASON_FNT,
+        R.REASON_CON,
+        R.REASON_RTI,
+        R.REASON_NRG,
+        R.REASON_EAC,
+        R.REASON_MCM,
+        R.REASON_TMP,
+        R.REASON_MER,
+        R.REASON_FAM,
+        R.REASON_ORS,
+        R.REASON_AOS,
+        R.REASON_PER,
+        R.REASON_MAT,
+        R.REASON_MAD,
+        R.REASON_UPD,
+        R.REASON_JCH,
+        R.REASON_RIF,
+        R.REASON_UJR,
+        R.REASON_DEA,
+        R.REASON_MOT,
+        R.REASON_LDY,
+        R.REASON_JRC,
+        R.REASON_COR,
+        R.REASON_LOC,
+        R.REASON_PRF,
+        R.REASON_AOD,
+        R.REASON_FCF,
+        R.REASON_PLN,
+        R.REASON_UFR,
+        R.REASON_MCL,
+        R.REASON_MCO,
+        R.REASON_NCP,
+        R.REASON_CRJ,
+        R.REASON_PLA,
+        R.REASON_RPL,
+        R.REASON_ADJ,
+        R.REASON_QLT,
+        R.REASON_MIL,
+        R.REASON_LOA,
+        R.REASON_CHG,
+        R.REASON_PLM,
+        R.REASON_COL,
+        R.REASON_FDT,
+        R.REASON_RFL,
+        R.REASON_RER,
+        R.REASON_SDI,
+        R.REASON_REO,
+        R.REASON_LDW,
+        R.REASON_PDL,
+        R.REASON_ANW,
+        R.REASON_CNF,
+        R.REASON_RLD,
+        R.REASON_FML,
+        R.REASON_QPR,
+        R.REASON_REH,
+        R.REASON_INS,
+        R.REASON_DBL,
+        R.REASON_VOL,
+        R.REASON_XFR,
+        R.REASON_ATT,
+        R.REASON_TFL,
+        R.REASON_LCF,
+        R.REASON_MRR,
+        R.REASON_STA,
+        R.REASON_NPS,
+        R.REASON_BUS,
+        R.REASON_ELI,
+        R.REASON_RET,
+        R.REASON_LDN
+    --FROM COUNTS C 
+    FROM /*LEFT JOIN*/ ACTION_PVT A ---ON (C.EIN = A.EIN)
+    LEFT JOIN REASON R ON (A.EIN = R.EIN)
+) 
+ /* ADD THE COUNTS CTE -- IF DONE AS A SINGLE CTE, HANGS UP SERVER */
+, __ADD_COUNTS__ AS (
+    SELECT 
+        P.*,
+        C.WORKLOCATION_COUNT,
+        C.JOBTITLE_COUNT,
+        C.HIRED_COUNT,
+        C.MANAGERS,
+        C.DEPARTMENTS
+    FROM __INIT_PIVOT__ P 
+    LEFT JOIN COUNTS C ON (P.EIN = C.EIN)
+)
+
+/* END OF PIVOT --- THIS SECTION ADDS IN YEARS WORKED FOR KES */
+, EMP_DATES AS (
+    /* ESTABLISH ORIGINAL HIRE DATE */
+    SELECT DISTINCT 
+        EMPLOYEEID AS EIN, 
+        'HIR' AS HR_ACTION,
+        ORGINALDATEOFHIRE AS ACTION_DATE
+    FROM  DBO.ADP_TRANSACTIONS
+    UNION 
+    /* ESTABLISH TERMINATION AND REHIRE DATES */
+    SELECT 
+        EMPLOYEEID AS EIN,
+        ACTION AS HR_ACTION,
+        EFFECTIVEDATE AS ACTION_DATE
+    FROM DBO.ADP_TRANSACTIONS
+    WHERE ACTION IN ('TER','REH')
+)
+
+, EMP_PERIODS AS (
+    /* CALCULATE THE NUMBER OF DAYS BETWEEN HIRE AND TERMINATION DATES (OR CURRENT DATE IF NO TERMINATION DATE) */
+    SELECT 
+        EIN,
+        CASE 
+            WHEN HR_ACTION IN ('HIR','REH') AND LEAD(ACTION_DATE) OVER(PARTITION BY EIN ORDER BY ACTION_DATE) IS NOT NULL THEN DATEDIFF(D, ACTION_DATE, LEAD(ACTION_DATE) OVER (PARTITION BY EIN ORDER BY ACTION_DATE))
+            WHEN HR_ACTION IN ('HIR','REH') AND LEAD(ACTION_DATE) OVER(PARTITION BY EIN ORDER BY ACTION_DATE) IS NULL THEN DATEDIFF(D, ACTION_DATE, GETDATE())
+            ELSE 0 END AS DAYS_EMPLOYED
+    FROM EMP_DATES
+)
+
+, __INIT_EMP_DAYS__ AS (
+    /* SUM UP THE TOTAL NUMBER OF DAYS EMPLOYEE WORKED FOR KEY ENERGY SERVICES */
+    SELECT 
+        EIN,
+        SUM(DAYS_EMPLOYED) AS KEY_DAYS_EMPLOYED 
+    FROM EMP_PERIODS
+    GROUP BY EIN 
+)
+
+, INDUSTRY AS (
+    /* GET FORMER EMPLOYER INDUSTRY DATA THAT WAS MANUALLY COLLECTED FROM THE SIC CODES (STANDARD INDUSTRIAL CLASSICIATION) */
+    SELECT * FROM [HR_REPORTING].[2022_Former_Company_Industry]
+)
+
+, __INIT_HR_DATA__ AS (
+    SELECT 
+        EMPLOYEE_ID AS EIN,
+        LOCATION_CODE,
+        LVL1_LINE_OF_BUSINESS,
+        LVL2_DEPARTMENT,
+        CASE WHEN CONCAT(LOCATION_CODE,'.',LVL1_Line_of_Business,'.',LVL2_Department) = '2045.1100.0000' THEN 'RMM' ELSE MARKETPLACE END AS MARKETPLACE,
+        EMPLOYEE_STATUS,
+        REG_TEMP,
+        FULL_PART,
+        ACTION AS HR_ACTION,
+        REASON_CODE,
+        CASE WHEN VOL_INV_TERM IS NULL THEN 'ACTIVE' ELSE VOL_INV_TERM END AS VOL_INV_TERM,
+        CASE WHEN EXPERIENCED_Y_N = '#N/A' THEN 'UNKOWN' ELSE EXPERIENCED_Y_N END AS EXPERIENCED_Y_N,
+        CASE WHEN PREVIOUS_EMPLOYER = '#N/A' THEN 'UNKNOWN' ELSE PREVIOUS_EMPLOYER END AS PREVIOUS_EMPLOYER,
+        CASE WHEN INDUSTRY IS NULL THEN 'UNKNOWN' ELSE INDUSTRY END AS PREVIOUS_INDUSTRY,
+        CASE WHEN PREVIOUS_JOB = '#N/A' THEN 'Unknown' ELSE PREVIOUS_JOB END AS PREVIOUS_JOB,
+        JOB_CODE,
+        JOB_TITLE,
+        GROUPING,
+        EFFECTIVE_DATE,
+        ELIGIBLE_FOR_OT_Y_N AS OT_ELIG,
+        DEPARTMENT_ID,
+        STATE_LOCATION_INFO,
+        MANAGER_ID,
+        ATTRITION,
+        HOURS_OF_OVERTIME_FOR_LAST_MONTH AS OT_HRS_LAST_MONTH,
+        HOURS_OF_OVERTIME_FOR_YEAR AS OT_HRS_LAST_YR,
+        CASE WHEN DATE_OF_LAST_PROMOTION IS NULL THEN LAST_HIRED_DATE ELSE DATE_OF_LAST_PROMOTION END AS DATE_OF_LAST_PROMOTION,
+        CASE WHEN YEARS_SINCE_LAST_PROMOTION_FROM_LAST_SAL_CHANGE_RPT IS NULL THEN 0 ELSE YEARS_SINCE_LAST_PROMOTION_FROM_LAST_SAL_CHANGE_RPT END AS YEARS_SINCE_LAST_PROMOTION_FROM_LAST_SAL_CHANGE_RPT,
+        CASE WHEN INCREASE_DECREASE IS NULL THEN 0 ELSE INCREASE_DECREASE END AS INCREASE_DECREASE
+   FROM (
+        SELECT 
+            *,
+            ROW_NUMBER() OVER (PARTITION BY EMPLOYEE_ID ORDER BY EFFECTIVE_DATE DESC) AS LAST_ACTION
+        FROM [HR_REPORTING].[2022_Current_with_EIN]
+    ) R 
+    LEFT JOIN INDUSTRY I ON (R.PREVIOUS_EMPLOYER = I.PREVIOUSEMPLOYER)
+    WHERE R.LAST_ACTION = 1 
+)
+ /* BUILD FINAL DATASET */
+, __DATASET__ AS (
+    SELECT 
+        H.*,
+        D.KEY_DAYS_EMPLOYED,
+        E.WORKLOCATION_COUNT,
+        E.JOBTITLE_COUNT,
+        E.HIRED_COUNT,
+        E.MANAGERS,
+        E.DEPARTMENTS,
+        E.ACTION_PRO, 
+        E.ACTION_PJC, 
+        E.ACTION_DEM, 
+        E.ACTION_MGR, 
+        E.ACTION__JRC, 
+        E.ACTION_HIR, 
+        E.ACTION_DTA, 
+        E.ACTION_LOA, 
+        E.ACTION_RFL, 
+        E.ACTION_TER, 
+        E.ACTION_POS, 
+        E.ACTION_XFR, 
+        E.ACTION_PAY, 
+        E.ACTION_REH,
+        E.REASON_VCP,
+        E.REASON_SUP,
+        E.REASON_PRO,
+        E.REASON_MAS,
+        E.REASON_AWO,
+        E.REASON_RTS,
+        E.REASON_NEU,
+        E.REASON_MRG,
+        E.REASON_RGR,
+        E.REASON_AOE,
+        E.REASON_QRG,
+        E.REASON_MOR,
+        E.REASON_NAW,
+        E.REASON_STC,
+        E.REASON_MWD,
+        E.REASON_FUR,
+        E.REASON_FMA,
+        E.REASON_HSI,
+        E.REASON_FPD,
+        E.REASON_NHR,
+        E.REASON_WCL,
+        E.REASON_CPR,
+        E.REASON_WCF,
+        E.REASON_ODT,
+        E.REASON_USP,
+        E.REASON_DIV,
+        E.REASON_NMP,
+        E.REASON_TTL,
+        E.REASON_RLA,
+        E.REASON_LVE,
+        E.REASON_OBC,
+        E.REASON_ORG,
+        E.REASON_WCP,
+        E.REASON_ACQ,
+        E.REASON_JOB,
+        E.REASON_MKT,
+        E.REASON_FNT,
+        E.REASON_CON,
+        E.REASON_RTI,
+        E.REASON_NRG,
+        E.REASON_EAC,
+        E.REASON_MCM,
+        E.REASON_TMP,
+        E.REASON_MER,
+        E.REASON_FAM,
+        E.REASON_ORS,
+        E.REASON_AOS,
+        E.REASON_PER,
+        E.REASON_MAT,
+        E.REASON_MAD,
+        E.REASON_UPD,
+        E.REASON_JCH,
+        E.REASON_RIF,
+        E.REASON_UJR,
+        E.REASON_DEA,
+        E.REASON_MOT,
+        E.REASON_LDY,
+        E.REASON_JRC,
+        E.REASON_COR,
+        E.REASON_LOC,
+        E.REASON_PRF,
+        E.REASON_AOD,
+        E.REASON_FCF,
+        E.REASON_PLN,
+        E.REASON_UFR,
+        E.REASON_MCL,
+        E.REASON_MCO,
+        E.REASON_NCP,
+        E.REASON_CRJ,
+        E.REASON_PLA,
+        E.REASON_RPL,
+        E.REASON_ADJ,
+        E.REASON_QLT,
+        E.REASON_MIL,
+        E.REASON_LOA,
+        E.REASON_CHG,
+        E.REASON_PLM,
+        E.REASON_COL,
+        E.REASON_FDT,
+        E.REASON_RFL,
+        E.REASON_RER,
+        E.REASON_SDI,
+        E.REASON_REO,
+        E.REASON_LDW,
+        E.REASON_PDL,
+        E.REASON_ANW,
+        E.REASON_CNF,
+        E.REASON_RLD,
+        E.REASON_FML,
+        E.REASON_QPR,
+        E.REASON_REH,
+        E.REASON_INS,
+        E.REASON_DBL,
+        E.REASON_VOL,
+        E.REASON_XFR,
+        E.REASON_ATT,
+        E.REASON_TFL,
+        E.REASON_LCF,
+        E.REASON_MRR,
+        E.REASON_STA,
+        E.REASON_NPS,
+        E.REASON_BUS,
+        E.REASON_ELI,
+        E.REASON_RET,
+        E.REASON_LDN
+    FROM  __INIT_HR_DATA__ H
+    LEFT JOIN __INIT_EMP_DAYS__ D ON (H.EIN = D.EIN)
+    LEFT JOIN __ADD_COUNTS__ E  ON (H.EIN = E.EIN)
+)
+
+SELECT * FROM __DATASET__
+GO
+

@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"name": "mdmdb_DB_Project",
+			"path": "."
+		},
+		{
+			"name": "DatabaseProject-stgdb-DEV",
+			"path": "../DatabaseProject-stgdb-DEV"
+		},
+		{
+			"name": "DatabaseProjectstgdb-PROD-POC",
+			"path": "../DatabaseProject-stgdb-Prod/DatabaseProjectstgdb-PROD-POC"
+		},
+		{
+			"name": "DatabaseProjectHRDB",
+			"path": "../DatabaseProject-HRDB/DatabaseProjectHRDB"
+		},
+		{
+			"name": "DatabaseProject-stgdb-PROD-POC",
+			"path": "../DatabaseProject-stgdb-Prod/DatabaseProject-stgdb-PROD-POC"
+		}
+	],
+	"settings": {
+		"dataworkspace.excludedProjects": [
+			"DatabaseProjectHRDB/DatabaseProjectHRDB.sqlproj",
+			"DatabaseProjectstgdb-PROD-POC/DatabaseProjectstgdb-PROD-POC.sqlproj"
+		]
+	}
+}
